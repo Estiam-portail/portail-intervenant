@@ -1,0 +1,236 @@
+<div class="container mt-4 mb-4">
+  <h4 class="text-center  mt-4 font-weight-bold">
+    COMPRENDRE L’OBJECTIF DE DIEGO !
+  </h4>
+
+  <h5 class="container text-center border-top pt-4 border-danger"> ACTIVITE 1 : Comprendre un message vocal et le
+    reformuler avec ses
+    propres mots </h5>
+  <figure>
+    <audio class="mt-4 mb-4" style="width: 100%; border: 1px solid #ea553c;" controls
+      src="/media/cc0-audio/t-rex-roar.mp3">
+      Your browser does not support the
+      <code>audio</code> element.
+    </audio>
+  </figure>
+</div>
+
+<!---------------------------------------------   fin   audio -------------------------------------------------->
+
+<div class="container mt-4">
+  <h6 class="text-danger text-center">Ouvrir un fichier audio
+  </h6>
+
+<!-------------------------------------------------------------------------------------------------------------------------->
+
+
+  <!---------------------------    question un ---------------->
+  <form #f="ngForm" (ngSubmit)="ficheAudio(f)" class="border border-primar rounded p-4 text-muted">
+  <div class="row m-4">
+    <div class="col-md-6 bg-light border border-dark rounded p-4">
+      <p> <i class=" text-danger mr-4 fas fa-question-circle"></i> Pour bien comprendre DIEGO, nous allons écouter un
+        enregistrement. Je vais vous faire écouter le message en entier. Écoutez attentivement ce message et essayez
+        de retenir certaines informations. Pouvez-vous lancer le fichier audio ?<br><small class="text-muted"><i
+            class="fab text-secondary mr-4 fa-font-awesome-flag"></i>
+          Si la personne n’y arrive pas, le faire à sa place.
+        </small></p>
+    </div>
+    <div class="col-md-6">
+      <!-- ************************************************************************************************************************************** -->
+      <p class="mt-4 ">1) La personne a-t-elle su lancer le fichier son ?</p>
+      <div class="form-group form-check mb-4 text-muted">
+        <label class="form-check-label mr-4">
+          <input class="form-check-input" name="quesUn" value="oui" ngModel type="radio">
+          OUI, elle a réussi
+        </label>
+        <div>
+          <label class="form-check-label ">
+            <input class="form-check-input"name="quesUn" value="non" ngModel type="radio">
+            NON
+          </label>
+        </div>
+      </div>
+      <!-- ***************************************************************************************** -->
+
+    </div>
+  </div>
+  <!------------------------   fin div deux ------------------->
+
+
+  <div class="container">
+    <h6 class="text-center text-danger">Écouter, mémoriser et reformuler
+    </h6>
+  </div>
+
+
+
+
+
+
+
+  <!---------------       question  deux ------------------->
+
+  <div class="row m-4">
+    <div class="col-md-6 bg-light border border-dark rounded p-4">
+      <p> <i class=" text-danger mr-4 fas fa-question-circle"></i> Pouvez-vous me dire ce que vous avez compris ?
+      </p>
+    </div>
+    <div class="col md-8">
+      <!-- ***************************************************************************************** -->
+      <p class="mt-4">2) La personne a-t-elle restitué le message en entier </p>
+      <div class="form-group form-check mb-4 text-muted">
+        <label class="form-check-label mr-4">
+          <input class="form-check-input " name="quesDeux" value="oui" ngModel type="radio"> OUI, clairement sans en
+          changer le sens
+
+        </label>
+        <div>
+          <label class="form-check-label  ">
+            <input class="form-check-input" name="quesDeux" value="ouienpartie" type="radio"> OUI EN PARTIE, la
+            restitution du message était un peu confuse
+          </label>
+        </div>
+        <div>
+          <label class="form-check-label  ">
+            <input class="form-check-input" name="quesDeux" value="non" ngModel type="radio"> NON, elle n’a pas réussi
+            à montrer qu’elle avait
+            compris le message.
+          </label>
+        </div>
+      </div>
+      <!-- ***************************************************************************************** -->
+
+    </div>
+  </div>
+  <!------------------------   fin div un ------------------->
+
+
+
+  <h6 class="text-center text-danger"> Utiliser un logiciel audio</h6>
+
+
+
+  <!---------------------------    question trois ---------------->
+
+  <div class="row m-4">
+    <div class="col-md-6 bg-light border border-dark rounded p-4">
+      <p><i class=" text-danger fas fa-question-circle"></i> Nous allons maintenant écouter un deuxième message.
+        Et vous allez répondre à ces trois questions :<br>Combien de temps dure le test ? <br>
+        Est-ce que le test se passe oralement, par écrit ou les deux ?<br>
+        Est-ce que j’ai le droit de vous aider ?</p>
+      <p class="text-center">Nous l’écouterons deux fois.<br>Pouvez-vous lancer le fichier audio?</p>
+      <small class="text-muted"><i class="fab text-secondary  fa-font-awesome-flag"></i>
+        A la fin de la première écoute:
+      </small>
+      <p>Pouvez-vous arrêter le fichier audio et le remettre au début?</p>
+    </div>
+    <div class="col md-8">
+      <!-- ************************************************************************************************************************************** -->
+      <p class="mt-4 ">3) La personne a-t-elle su arrêter le message et le remettre au début de l’enregistrement ? </p>
+      <div class="form-group form-check mb-4 text-muted">
+        <p>
+          <label class="form-check-label ">
+            <input class="form-check-input" name="quesTroix" value="oui" ngModel type="radio">OUI, elle a tout réussi
+          </label>
+        </p>
+
+        <p>
+          <label class="form-check-label ">
+            <input class="form-check-input" name="quesTroix" value="ouienpartie" ngModel type="radio"> OUI EN PARTIE
+          </label>
+        </p>
+        <p> <label class="form-check-label ">
+            <input class="form-check-input" name="quesTroix" value="non" ngModel type="radio"> NON, elle n’y est pas
+            arrivée
+          </label></p>
+      </div>
+      <!-- ***************************************************************************************** -->
+
+    </div>
+  </div>
+
+
+  <h6 class="text-center text-danger"> Ecouter et répondre à des questions</h6>
+  <!---------------       question  quatre ------------------->
+
+  <div class="row m-4">
+    <div class="col-md-6 bg-light border border-dark rounded p-4">
+      <p> <i class=" text-danger mr-4 fas fa-question-circle"></i> Pouvez-vous répondre à ces trois questions:<br>
+        Combien
+        de temps dure le test ? <br>Est-ce que le test se passe oralement, par écrit ou les deux ? <br> Est-ce que
+        j’ai le droit
+        de vous aider?
+      </p>
+    </div>
+    <div class="col md-8">
+      <!-- ***************************************************************************************** -->
+      <p class="mt-4">4) La personne a-t-elle su répondre correctement aux trois questions posées? </p>
+      <div class="form-group form-check mb-4 text-muted">
+        <label class="form-check-label mr-4">
+          <input class="form-check-input " name="quesQuatre" value="oui" ngModel type="radio">OUI, aux 3 questions
+        </label>
+        <div>
+          <label class="form-check-label  ">
+            <input class="form-check-input" name="quesQuatre" value="ouienpartie" ngModel type="radio"> OUI, à 1 ou 2 questions
+          </label>
+        </div>
+        <div>
+          <label class="form-check-label  ">
+            <input class="form-check-input" name="quesQuatre" value="non" ngModel type="radio">NON, elle n’a su
+            répondre à aucune question
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-----------------------------------   fin div quatre ---------------------------------------->
+
+
+
+
+
+
+  <!----------------------------------       question  cenque  ------------------------------------>
+  <h6 class="text-center text-danger">Donner une réponse personnelle et la justifier </h6>
+  <div class="row m-4">
+    <div class="col-md-6 bg-light border border-dark rounded p-4">
+      <p> <i class=" text-danger mr-4 fas fa-question-circle"></i> Pouvez-vous me dire, à votre avis, ce que vous
+        savez déjà faire et ce qu’il vous reste à apprendre?
+      </p>
+    </div>
+    <div class="col md-8">
+      <!-- ***************************************************************************************** -->
+      <p class="mt-4">5) La personne a-t-elle exprimé clairement ce qu’elle savait faire et ce qui lui restait à
+        apprendre?</p>
+      <div class="form-group form-check mb-4 text-muted">
+        <label class="form-check-label mr-4">
+          <input class="form-check-input " name="quesCenque" value="oui" ngModel type="radio">OUI, son message était
+          clair
+        </label>
+        <div>
+          <label class="form-check-label  ">
+            <input class="form-check-input" name="quesCenque" value="ouienpartie" ngModel type="radio">OUI EN PARTIE, elle a
+            compris la question mais sa réponse était courte et un peu
+            confuse
+          </label>
+        </div>
+        <div>
+          <label class="form-check-label  ">
+            <input class="form-check-input" name="quesCenque" value="non" ngModel type="radio">NON, sa réponse était
+            peu compréhensible ou elle n'a pas compris la question
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------------------------   fin div cenque ------------------->
+
+
+
+
+  <!-----------------------------   fin des divs row --------------------------->
+
+  <button type="submit" class="btn btnbg float-right mr-4"><i
+      class="fas fa-forward pl-4 pr-4"></i></button>
+
+</form>

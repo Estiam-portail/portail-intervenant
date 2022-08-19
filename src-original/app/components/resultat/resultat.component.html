@@ -1,0 +1,64 @@
+<h3 class="text-center text-danger mt-4">
+    les resultat final de 
+
+</h3>
+<p class="text-text-dark text-center"><strong>{{candidatService.genre}} : </strong> {{candidatService.prenom}} {{candidatService.nom}}</p>
+
+<p class="text-text-dark text-center"><strong>Date de naissance : </strong>
+  {{candidatService.dateNaissance}}</p>
+<p class="text-text-dark text-center"><strong>Lieu de naissance : </strong>
+  {{candidatService.lieuNaissance}}</p>
+<p class="text-text-dark text-center"><strong>Adresse : : </strong>
+  {{candidatService.adresse}}</p>
+<p class="text-text-dark text-center"><strong>Ville : </strong>
+  {{candidatService.ville}}</p>
+<p class="text-text-dark text-center"><strong>Code postale : </strong>
+  {{candidatService.codePostale}}</p>
+<p class="text-text-dark text-center"><strong>Tel : </strong>
+  {{candidatService.telephone}}</p>
+<p class="text-text-dark text-center"><strong>Email : </strong>
+  {{candidatService.email}}</p>
+    
+
+ 
+<div class="container mt-4">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Calcul</th>
+        <th scope="col">REspace</th>
+        <th scope="col">RTemps </th>
+        <th scope="col">Numerique </th>
+        <th scope="col">CE</th>
+        <th scope="col">EE</th>
+        <th scope="col">CO</th>
+        <th scope="col">EO</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Note</th>
+        <td>{{resultService.Calcul}}</td>
+        <td>{{resultService.REspace}}</td>
+        <td>{{resultService.RTemps}}</td>
+        <td>{{resultService.Numerique}}</td>
+        <td>{{resultService.CE}}</td>
+        <td>{{resultService.EE}}</td>
+        <td>{{resultService.CO}}</td>
+        <td>{{resultService.EO}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+<div class="container" style="width: 600px; height: 300px;">
+    <h1 class="text-center text-info">Vous trouvez ici vous resultat</h1>
+    
+    <canvas id="myChart" width="600" height="200" ></canvas>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>

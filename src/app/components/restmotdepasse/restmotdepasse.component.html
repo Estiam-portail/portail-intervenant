@@ -1,0 +1,11 @@
+<!-- Pop-up -->
+hello !
+<div class="container border border-secondary rounded">
+    <form class="form-inline p-4" #f="ngForm" (ngSubmit)="resetPassword(f)">
+        <div class="form-group p-4 mb-2">
+            <label class="sr-only">Password</label>
+            <input type="email" class="form-control" ngModel name="email" placeholder="Votre email !">
+        </div>
+        <button type="submit" class="btn btn-info mb-2">Confirmer</button>
+    </form>
+</div>

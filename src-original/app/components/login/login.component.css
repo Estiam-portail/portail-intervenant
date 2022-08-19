@@ -1,0 +1,31 @@
+.text{
+    color: #ea553c;
+}
+.btn-bg{
+    background-color: #a9d7c8;
+}
+input[type=text] {
+    background-color: #eae3d8;
+    color: white;
+  }
+  input[type=email] {
+    background-color: #eae3d8;
+    color: white;
+  }
+  input[type=password] {
+    background-color: #eae3d8;
+    color: white;
+  }
+  .form{
+    margin-bottom: 300px;
+  }
+  .footer {
+    background: #545454;
+    height: 100px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }

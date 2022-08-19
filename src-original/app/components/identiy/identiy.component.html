@@ -1,0 +1,70 @@
+<div class="container">
+
+  <h4 class="text-center  mt-4 font-weight-bold mb-4 ">
+    Séquence 2 : S’INSCRIRE SUR DIEGO !
+  </h4>
+
+  <form #f="ngForm" (ngSubmit)="identity(f)" class="border border-primar rounded p-4 text-muted">
+    <div class="form-group form-check">
+      <label class="form-check-label mr-4">
+        <input class="form-check-input" ngModel name="genre" value="madame"  type="radio"> Madame
+      </label>
+      <label class="form-check-label ml-4">
+        <input class="form-check-input"  ngModel name="genre" value="monsieur"  type="radio"> Monsieur
+      </label>
+    </div>
+    <div class="form-group">
+      <label>Nom:</label>
+      <input type="text" class="form-control" ngModel name="prenom">
+    </div>
+    <div class="form-group">
+      <label>Prénom:</label>
+      <input type="text" class="form-control" name="nom" ngModel>
+    </div>
+    <div class="form-group">
+      <label>Date de naissance :</label>
+      <input type="date" class="form-control" name="dateNaissance" ngModel>
+    </div>
+    <div class="form-group">
+      <label>Lieu de naissance :</label>
+      <input type="text" class="form-control" name="lieuNaissance" ngModel>
+    </div>
+
+    <!--------------------------------   contacte  -------------->
+    <div class="form-group">
+      <label for="inputAddress2">Adresse :</label>
+      <input type="text" class="form-control" name="adresse" ngModel>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Ville</label>
+        <input type="text" class="form-control" name="ville" ngModel>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputZip">Code postal</label>
+        <input type="text" class="form-control" name="codePostale" ngModel>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>N° de téléphone :</label>
+      <input type="text" class="form-control" name="telephone" ngModel>
+    </div>
+    <div class="form-group">
+      <label>Email :</label>
+      <input type="email" class="form-control" name="email" ngModel>
+    </div>
+
+
+    <div class="row">
+      <div class="col-8"><button class="btn btnbg" routerLink="/activiteidentitie"><i
+            class="fas fa-undo-alt ml-4 mr-4"></i></button></div>
+      <div class="col-4"><button type="submit" class="btn btnbg float-right" ><i
+            class="fas fa-forward pl-4 pr-4"></i></button></div>
+    </div>
+
+   
+  </form>
+
+
+
+</div>

@@ -1,0 +1,924 @@
+<div class="mt-4">
+
+  <div class="row">
+    <div class="col-md-3" *ngIf="!lienversletableau">
+      <a class="ml-4 text-center text btn btn-info mb-4 text"
+        href="https://illettrisme.org/ressources-documentaires/diego/164-diego/1018-diego-kit " target="_blank"> kit de
+        l’accompagnateur</a>
+    </div>
+
+    <div class="col-md-6">
+      <h2 class="text-center  mb-4 text"> Historique des évaluations</h2>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-3 " *ngIf="lienversletableau">
+      <button class="ml-4 text-center text btn btn-info mb-4 text float-right " (click)="afficherresult()">
+        Details des réponses aux questions </button>
+    </div>
+
+    <div class="col-md-3 " *ngIf="lienversletableau">
+      <button class="ml-4 text-center text btn btn-info mb-4 text float-right " (click)="affichertableaudegrer()">
+        Bilan par compétence et par degré </button>
+    </div>
+
+    <div class="col-md-3 " *ngIf="lienversletableau">
+      <button style="width: 300px;" class="ml-4 text-center text btn btn-danger mb-4 text float-right "
+        (click)="retourneauresult()">
+        Retour à la liste</button>
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-md-9 " *ngIf="tableau">
+      <table class=" table bg-light border rounded p-2">
+        <thead class="">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <!-- <th scope="col">CE</th>
+            <th scope="col">CO</th>
+            <th scope="col">Cal</th>
+            <th scope="col">EE</th>
+            <th scope="col">EO</th>
+            <th scope="col">Num</th>
+            <th scope="col">REspace</th>
+            <th scope="col">RTemps</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of diag">
+            <div *ngIf="uid === d.uid">
+            <td>{{d.myDate | date:'d/M/yyyy'}} </td>
+            <td>{{d.prenom}}</td>
+            <td>{{d.nom | slice:0:2}} </td>
+            <!-- <td>{{d.CE}}</td>
+            <td>{{d.CO}}</td>
+            <td>{{d.Calcul}}</td>
+            <td>{{d.EE}}</td>
+            <td>{{d.EO}}</td>
+            <td>{{d.Numerique}}</td>
+            <td>{{d.REspace}}</td> -->
+            <!-- {{d.RTemps}} -->
+            <td> <button class="btn btn-info float-right" (click)="detail(d.id)">résultats</button></td>
+            <!-- <td><button class="btn btn-info" (click)="detail(d.id)">résultats</button></td> -->
+            <!-- <td><button (click)="delete(d.id)">Delete</button></td> -->
+          </div>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3 border border-dark rounded" *ngIf="tableau">
+      <p>
+        Quatre paliers de compétences sont définis pour graduer l'avancée
+        vers la maîtrise des compétences de base :
+
+      </p>
+      <p>Degré 1 : Repères structurants</p>
+      <p>Degré 2 : Compétences fonctionnelles pour la vie courante</p>
+      <p>Degré 3 : Compétences facilitant l'action dans des situations
+        variées</p>
+      <p>Degré 4 : Compétences renforçant l'autonomie pour agir dans
+        la société de la connaissance</p>
+      <p>Pour en savoir : <a href="https://illettrisme.org/glossaire?start=2" target="_blank">
+          <i class="fas fa-plus"></i></a></p>
+    </div>
+
+  </div>
+
+
+  <div class=" container p-4 border border-dark rounded" *ngIf="resiltvide || radar">
+    <p class="text-center "><strong> {{DRgenre }} </strong>{{DRnom}} {{DRprenom}} </p>
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <strong> Date de l'évaluation </strong> : {{RDdate | date:'d/M/yyyy'}}
+      </div>
+      <div class="col-md-8">
+        <strong> Date et lieu de naissance </strong> : {{DRdateNaissance | date:'d/M/yyyy' }} à {{DRlieuNaissance}}
+      </div>
+    </div>
+    <h6 class="m-4 text-info text-center "> Résultats en degrés par compétence de <strong> {{DRgenre }} {{DRnom}}
+        {{DRprenom}}</strong></h6>
+    <!-- -----------------------------t  ableau detail ----------------------- -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">CE</th>
+          <th scope="col">EE</th>
+          <th scope="col">CO</th>
+          <th scope="col">Cal</th>
+          <th scope="col">EO</th>
+          <th scope="col">REspace</th>
+          <th scope="col">RTemps</th>
+          <th scope="col">Num</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{DReCE}}</td>
+          <td>{{DReEE}}</td>
+          <td>{{DReCO}}</td>
+          <td>{{DReCalcul}}</td>
+          <td>{{DReEO}}</td>
+          <td>{{DReREspace}}</td>
+          <td>{{DReRTemps}}</td>
+          <td>{{DReNumerique}}</td>
+        </tr>
+        <tr>
+      </tbody>
+    </table>
+    <!-- <-------------------------------fin tableau detai degres    -->
+  </div>
+
+  <!-- div resultat des quesion -->
+
+
+  <div class="container " *ngIf="detaiQuestions">
+    <h3 class="container text-center pt-4">Récapitulatif des réponses aux questions
+    </h3>
+
+    <div class="alert alert-dark">
+      Fichier Audio
+    </div>
+    <h6 class="text-danger mt-4">Ouvrir un fichier audio
+    </h6>
+    <p class="mt-4 ">1) La personne a-t-elle su lancer le fichier son : <strong class=" mr-4">{{DRquestionUn}}</strong>
+    </p>
+    <h6 class="text-danger mt-4">Écouter, mémoriser et reformuler
+    </h6>
+    <p class="mt-4 ">2) La personne a-t-elle restitué le message en entier : <strong
+        class=" mr-4">{{DRquestionDeux}}</strong></p>
+    <h6 class="text-danger mt-4">Utiliser un logiciel audio
+    </h6>
+    <p class="mt-4 ">3) La personne a-t-elle su arrêter le message et le remettre au début de l’enregistrement :
+      <strong class=" mr-4">{{DRquestionTroix}}</strong>
+    </p>
+    <h6 class="text-danger mt-4">Ecouter et répondre à des questions
+    </h6>
+    <p class="mt-4 ">4) La personne a-t-elle su répondre correctement aux trois questions posées : <strong
+        class=" mr-4">{{DRquestionQuatre}}</strong></p>
+    <h6 class="text-danger mt-4">Donner une réponse personnelle et la justifier
+    </h6>
+    <p class="mt-4 ">5) La personne a-t-elle exprimé clairement ce qu’elle savait faire et ce qui lui restait à
+      apprendre : <strong class=" mr-4">{{DRquestionCenque}}</strong></p>
+
+    <!-- ********************************************************************** -->
+
+    <div class="alert alert-dark">
+      Renseigner un formulaire d’identité
+    </div>
+    <h6 class="text-danger mt-4">Utiliser et communiquer avec les outils numériques
+    </h6>
+    <p class="mt-4 ">6) La personne sait-elle se servir d’un ordinateur avec un clavier : <strong
+        class=" mr-4">{{DRquestionSix}}</strong></p>
+
+    <p class="mt-4 ">7) La personne a-t-elle une adresse mail : <strong class=" mr-4">{{DRquestionSept}}</strong> </p>
+    <p class="mt-4 ">8) La personne sait-elle envoyer un mail à plusieurs personnes : <strong
+        class=" mr-4">{{DRquestionHuit}}</strong></p>
+    <p class="mt-4 ">9) La personne utilise-t-elle les sms (ou messagerie instantanée) : <strong
+        class=" mr-4">{{DRquestionNeuf}}</strong></p>
+
+    <!-- ************************************************************************************* -->
+
+    <div class="alert alert-dark">
+      Identité
+    </div>
+    <h6 class="text-danger mt-4">Renseigner un formulaire
+    </h6>
+    <p class="mt-4 ">10) La personne a rempli le formulaire d’identité sur ordinateur : <strong
+        class=" mr-4">{{DRquestionDix}}</strong></p>
+    <p class="mt-4 ">11) La personne a-t-elle rempli les items du questionnaire d’identité : <strong
+        class=" mr-4">{{DRquestionOnze}}</strong></p>
+    <p class="mt-4 ">12) A-t-elle rempli les cases correspondant à sa date de naissance : <strong
+        class=" mr-4">{{DRquestionDouze}}</strong></p>
+    <p class="mt-4 ">13) A-t-elle donné le titre de son dernier emploi : <strong
+        class=" mr-4">{{DRquestionTreize}}</strong></p>
+    <p class="mt-4 ">14) A-t-elle donné la date de son dernier emploi: <strong
+        class=" mr-4">{{DRquestionQuatorze}}</strong></p>
+
+    <!-- ********************************************************************************************** -->
+
+    <div class="alert alert-dark">
+      Se déplacer en ville
+    </div>
+    <p class="mt-4 ">15) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionQuinze}}</strong></p>
+    <p class="mt-4 ">16) La personne a-t-elle cité la station de métro la plus proche de la mairie : <strong
+        class=" mr-4">{{DRquestionSeize}}</strong></p>
+
+    <p class="mt-4 ">17) La personne a-t-elle montré les 2 endroits : <strong
+        class=" mr-4">{{DRquestionDixsept}}</strong></p>
+    <p class="mt-4 ">18) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionDixhuit}}</strong></p>
+    <p class="mt-4 ">19) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionDixneuf}}</strong></p>
+    <p class="mt-4 ">20) La personne a-t-elle désigné l'établissement : <strong
+        class=" mr-4">{{DRquestionVingt}}</strong></p>
+    <p class="mt-4 ">21) La personne a-t-elle réussi à lire ce qui est écrit : <strong
+        class=" mr-4">{{DRquestionVingtun}}</strong></p>
+    <p class="mt-4 ">22) La personne a-t-elle compris et expliqué le sens du panneau : <strong
+        class=" mr-4">{{DRquestionVingtdeux}}</strong></p>
+    <p class="mt-4 ">23) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionVingttroix}}</strong></p>
+    <p class="mt-4 ">24) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionVingtquatre}}</strong></p>
+    <p class="mt-4 ">25) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionVingtcenque}}</strong></p>
+    <p class="mt-4 ">26) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionVingtsix}}</strong></p>
+    <p class="mt-4 ">27) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionVingtcept}}</strong></p>
+    <p class="mt-4 ">28) La personne a-t-elle réussi à répondre à la question et à la justifier : <strong
+        class=" mr-4">{{DRquestionVingthuit}}</strong></p>
+
+    <!-- ********************************************************************************************** -->
+
+    <div class="alert alert-dark">
+      Monde du travail
+    </div>
+    <p class="mt-4 ">29) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionVingtneuf}}</strong></p>
+    <p class="mt-4 ">30) La personne a-t-elle dit à qui est adressé ce document : <strong
+        class=" mr-4">{{DRquestionTrente}}</strong></p>
+    <p class="mt-4 ">31) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionTrenteun}}</strong></p>
+    <p class="mt-4 ">32) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionTrentedeux}}</strong></p>
+    <p class="mt-4 ">33) La personne a-t-elle réussi à répondre : <strong
+        class=" mr-4">{{DRquestionTrentetroix}}</strong>
+    </p>
+    <p class="mt-4 ">34) La personne a-t-elle réussi à répondre à répondre : <strong
+        class=" mr-4">{{DRquestionTrentequatre}}</strong></p>
+
+    <!-- ********************************************************************************************** -->
+
+    <div class="alert alert-dark">
+      Offre d'emploi
+    </div>
+    <p class="mt-4 ">35) Calculer une durée : <strong class=" mr-4">{{DRquestionTrentecenque}}</strong></p>
+    <h6 class="text-danger mt-4">Répondre à une offre d’emploi
+    </h6>
+    <p class="mt-4 ">36) La personne a-t-elle réussi à répondre aux question 1 à 5 : <strong
+        class=" mr-4">{{DRquestionTrentesix}}</strong></p>
+    <p class="mt-4 ">37) La personne a-t-elle réussi à répondre à la question : <strong
+        class=" mr-4">{{DRquestionTrentecepte}}</strong></p>
+    <h6 class="text-danger mt-4">Lire et comprendre la consigne (lecture silencieuse)
+    </h6>
+    <p class="mt-4 ">38) La personne a-t-elle réussi à mettre les phrases dans l’ordre : <strong
+        class=" mr-4">{{DRquestionTrentehuite}}</strong></p>
+    <h6 class="text-danger mt-4">Rédaction de quelques petites phrases
+    </h6>
+    <p class="mt-4 ">39) La personne a-t-elle réussi à rédiger ou compléter les phrases : <strong
+        class=" mr-4">{{DRquestionTrenteneuf}}</strong></p>
+    <p class="mt-4 ">40) La personne a-t-elle signé la lettre : <strong class=" mr-4">{{DRquestionQuarante}}</strong>
+    </p>
+
+  </div>
+
+
+  <!---------------------    les degres evolution     !------------ -->
+
+  <div class="container bg-light mt-4" *ngIf="tableaudegres">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">Compétences acquises</th>
+          <th scope="col">Ce que Diego permet de dire</th>
+          <th scope="col">Des objectifs à se fixer !</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr>
+          <!--------------------------     Compréhension écrite        - -  --------------- -->
+          <th scope="row">Compréhension écrite</th>
+          <td>
+            <div class="degres1" *ngIf="degre1DRCO">
+
+              <p class="text-info">degré 1 en cours</p>
+              La personne est en cours d'acquisition des compétences de degré 1.
+            </div>
+
+            <div class="degres2" *ngIf="degre2DRCO">
+
+              <p class="text-info">degré 2 en cours</p>
+              La personne a acquis des compétences de degré 1 et est en cours
+              d'acquisition de
+              certaines compétences de degré 2.</div>
+
+            <div class="degres3" *ngIf="degre3DRCO">
+
+              <p class="text-info">degré 3 en cours</p>
+              La personne a acquis des compétences de degré 2 et est en cours
+              d'acquisition de
+              certaines compétences de degré 3..</div>
+          </td>
+
+          <td>
+            <!-- etape 1 -->
+            <div class="degre1" *ngIf="degre1DRCO">
+              
+              La personne commence à se repérer dans l’univers de l’écrit, en identifiant des signes et parfois des
+              mots
+            </div>
+            <div class="degre2" *ngIf="degre2DRCO">
+               La personne est capable de se repérer dans l’univers de l’écrit, en identifiant des signes et des
+              mots.Elle peut lire quelques mots très courants ou qui lui sont familiers.Elle est également capable
+              d’extraire des informations clés lorsque les questions sont précises et que la réponse est constituée d’un
+              mot ou plusieurs mots. Sa compréhension de l’écrit est focalisée sur celle du mot, l'accès au sens d'un
+              énoncé reste compliqué
+            </div>
+            <div class="degre3" *ngIf="degre3DRCO">
+              La personne est capable, dans un environnement familier, de lire des phrases courtes
+              (sujet-verbe-objet),
+              de trouver des informations dans des documents courants. Elle est capable d’identifier la fonction d’un
+              document et d'y trouver des informations utiles mais partielles. Elle est également capable de lire un
+              tableau à double entrée.
+            </div>
+          </td>
+          <!-- etape 2 -->
+          <td>
+            <div class="degre1" *ngIf="degre1DRCO">DIEGO a permis d'identifier que la personne est en cours
+              d'acquisition de compétences
+              permettant :- d'identifier la nature et la fonction d'un document (ex. : plan d'une ville, bulletin de
+              paie)- de comprendre un panneau (interdit de stationner)</div>
+            <div class="degres2" *ngIf="degre2DRCO">DIEGO permet de dire que la personne sait :- Identifier la nature
+              et la fonction d'un
+              document (ex. : plan d'une ville, bulletin de paie)- Comprendre un panneau (ex. : interdiction de
+              stationner)- Repérer une information clé dans un document (ex. : le mot métier dans le bulletin de paie)
+            </div>
+            <div class="degres3" *ngIf="degre3DRCO">DIEGO permet de dire que la personne sait : - Comprendre un
+              formulaire- Comprendre des
+              icônes- Lire un tableau à double entrée- Rechercher une information complexe dans un document- Comprendre
+              des questions écrites- Reconstituer la chronologie d’un texte</div>
+          </td>
+          <!-- etape 3 -->
+          <td>
+            <div class="degres1" *ngIf="degre1DRCO">La personne peut viser l'acquisition et la stabilisation de
+              compétences permettant
+              demieux se repérer dans l’univers de l’écrit, de pouvoir lire quelques mots très courants, et aussi
+              d’extraire des informations clés lorsque les questions sont précises et que la réponse est constituée d’un
+              mot ou plusieurs mots.</div>
+            <div class="degres2" *ngIf="degre2DRCO">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences
+              permettantdelire des phrases courtes (sujet-verbe-objet), de trouver des informations dans des documents
+              courants, dans un environnement familier, y comprendre des informations utiles même partielles. Exemples
+              de compétences à acquérir :- Comprendre un formulaire- Comprendre des icônes- Lire un tableau à double
+              entrée- Rechercher une information complexe dans un document- Comprendre des questions écrites-
+              Reconstituer la chronologie d’un texte</div>
+            <div class="degres3" *ngIf="degre3DRCO">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences
+              permettant de comprendre des textes courts (vocabulaire usuel), d’anticiper le sens, de répondre à des
+              questions sur le sens, liées au message du texte, mais aussi d’utiliser des aides tels le dictionnaire,
+              l’annuaire, les horaires, la carte etc. et de pouvoir lire quel que soit l’espace graphique (paragraphes,
+              colonnes, etc.)Cela permet de se diriger vers plus d’abstraction, une meilleure compréhension des
+              tableaux, graphiques et schémas</div>
+          </td>
+        </tr>
+        <tr>
+
+          <!--------------------------    fin Compréhension écrite        - -  --------------- -->
+          <th scope="row">Expression écrite</th>
+          <td scope="row">
+            <div class="degres1" *ngIf="degre1DREE">
+
+              <p class="text-info">degré 1 en cours</p>
+              La personne est en cours d'acquisition des compétences de degré 1.
+            </div>
+
+            <div class="degres2" *ngIf="degre2DREE">
+
+              <p class="text-info">degré 2 en cours</p>
+              La personne a acquis des compétences de degré 1 et est en cours
+              d'acquisition de
+              certaines compétences de degré 2.</div>
+
+            <div class="degres3" *ngIf="degre3DREE">
+
+              <p class="text-info">degré 3 en cours</p>
+              La personne a acquis des compétences de degré 2 et est en cours
+              d'acquisition de
+              certaines compétences de degré 3..</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DREE">La personne commence à écrire son nom et ses coordonnées</div>
+            <div class="degre2" *ngIf="degre2DREE">La personne est capable d'écrire, souvent recopier, son nom et son
+              adresse et quelques
+              mots très courants ou qui lui sont familiers. La personne est capable de produire un écrit parcellaire
+              concernant les rubriques de son état civil, seul ou à l’aide d’un modèle</div>
+            <div class="degre3 " *ngIf="degre3DREE">La personne est capable d'écrire des phrases courtes, bien
+              segmentées, au présent, dans
+              un environnement familier. Elle est capable d’adapter son écrit à des supports connus (page de cahier, A4,
+              carte postale...). Elle peut produire un écrit bref, principalement phonétique, renseigner par des mots,
+              groupe de mots ou phrases simples (sujet - verbe - objet). Elle utilise un vocabulaire d’usage sur des
+              thèmes de la vie courante.</div>
+          </td>
+
+          <td>
+            <div class="degre1" *ngIf="degre1DREE">DIEGO a permis d'identifier que la personne est en cours
+              d'acquisition de compétences
+              permettant de recopier ou écrire son nom, ses coordonnées et quelques mots courants ou familiers</div>
+            <div class="degre2" *ngIf="degre2DREE">DIEGO permet de dire que la personne sait :- transmettre une
+              information simple (ex. :
+              écrire le titre de son dernier emploi ou stage)- apposer sa signature sur un document (ex. : sur la lettre
+              de motivation).</div>
+            <div class="degre3" *ngIf="degre3DREE">DIEGO permet de dire que la personne sait :- remplir
+              (partiellement ou complètement) un
+              formulaire d’identité - construire des énoncés cohérents (ex. : compléter des phrases en produisant un
+              texte)</div>
+          </td>
+          <td>
+            <div class="degre1 " *ngIf="degre1DREE">La personne peut viser l'acquisition et la stabilisation de
+              compétences permettant
+              deproduire un écrit parcellaire concernant les rubriques de son état civil, seul ou à l’aide d’un modèle
+              (écrire son nom, son adresse et quelques mots courants et familiers).</div>
+            <div class="degre2 " *ngIf="degre2DREE">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences
+              permettant d'écrire des phrases courtes, bien segmentées, au présent, dans un environnement familier. Ces
+              compétences lui permettront d’adapter son écrit à des supports connus (page de cahier, A4, carte
+              postale...) et de produire un écrit bref avec des groupes de mots ou phrases simples (sujet - verbe -
+              objet) avec un vocabulaire d’usage sur des thèmes de la vie courante</div>
+            <div class="degre3" *ngIf="degre3DREE">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences
+              permettant de produire quelques phrases ou des textes courts compréhensibles malgré des erreurs
+              orthographiques. Ces compétences lui permettront d’utiliser différents temps et les connecteurs logiques,
+              un vocabulaire varié et organiser son écrit sur tous supports graphiques. Cela permet de se diriger vers
+              plus d’abstraction et appropriation des codes, notamment les registres de langue</div>
+          </td>
+        </tr>
+        <!-- -------------------------------------     -------------- -->
+        <tr>
+          <th scope="row">Compréhension orale </th>
+          <td scope="row">
+            <div class="degres1" *ngIf="degre1DRCO">
+              <p class="text-info">degré 1 en cours</p>
+              La personne est en cours d'acquisition des compétences de degré 1.
+            </div>
+
+            <div class="degres2" *ngIf="degre2DRCO">
+              <p class="text-info">degré 2 en cours</p>
+              La personne a acquis des compétences de degré 1 et est en cours
+              d'acquisition de
+              certaines compétences de degré 2.</div>
+
+            <div class="degres3" *ngIf="degre3DRCO">
+              <p class="text-info">degré 3 en cours</p>
+              La personne a acquis des compétences de degré 2 et est en cours
+              d'acquisition de
+              certaines compétences de degré 3..</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRCO">La personne commence à comprendre des questions fermées après
+              répétitions ou reformulations.</div>
+            <div class="degre2" *ngIf="degre2DRCO">La personne est capable de comprendre des questions fermées, après
+              répétitions ou reformulations, faire répéter, et y répondre en quelques mots. Elle comprend difficilement
+              un discours long, malgré les reformulations de son interlocuteur.</div>
+            <div class="degre3" *ngIf="degre3DRCO">La personne est capable d’interagir à l’oral, de comprendre et
+              répondre à des questions ouvertes, même si elle fait préciser les questions qu’on lui pose.</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRCO">DIEGO a permis d'identifier que la personne est en cours
+              d'acquisition de compétences permettant de comprendre des questions fermées, très fréquentes, après
+              reformulations de son interlocuteur. </div>
+            <div class="degre2" *ngIf="degre2DRCO">DIEGO permet de dire que la personne sait comprendre et répondre à
+              des questions fermées.</div>
+            <div class="degre3" *ngIf="degre3DRCO">DIEGO permet de dire que la personne sait :- comprendre un message
+              oral en restituant le contenu, - comprendre une question ouverte (ex. : dire ce qu'elle sait faire et ce
+              qui lui reste à apprendre) ou complexe (ex. : expliciter un trajet vers un lieu de rendez-vous à une heure
+              précise)</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRCO">La personne peut maintenant viser l'acquisition et la stabilisation
+              de compétences permettant de comprendre des questions fermées et y répondre en quelques mots</div>
+            <div class="degre2" *ngIf="degre2DRCO">La personne peut maintenant viser l'acquisition et la stabilisation
+              de compétences permettant d'interagir à l’oral, de comprendre et répondre à des questions ouvertes, de
+              faire préciser les questions qu’on lui pose</div>
+            <div class="degre3" *ngIf="degre3DRCO">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant de comprendre des messages qui dépassent un simple énoncé et
+              identifier plusieurs informations dans un message. Ces compétences lui permettront de comprendre un
+              message oral, même dans un environnement défavorable (bruits...)</div>
+          </td>
+        </tr>
+        <!-- ------------------------------------------------------------ -->
+        <tr>
+          <th scope="row">Expression orale</th>
+          <td scope="row">
+            <div class="degres1" *ngIf="degre1DREO">
+              <p class="text-info">degré 1 en cours</p>
+              La personne est en cours d'acquisition des compétences de degré 1.
+            </div>
+
+            <div class="degres2" *ngIf="degre2DREO">
+              <p class="text-info">degré 2 en cours</p>
+              La personne a acquis des compétences de degré 1 et est en cours
+              d'acquisition de
+              certaines compétences de degré 2.</div>
+
+            <div class="degres3" *ngIf="degre3DREO">
+              <p class="text-info">degré 3 en cours</p>
+              La personne a acquis des compétences de degré 2 et est en cours
+              d'acquisition de
+              certaines compétences de degré 3..</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DREO">La personne commence à répondre en un seul mot à des questions très
+              courtes, usuelles et répétitives.</div>
+            <div class="degre2" *ngIf="degre2DREO">La personne est capable de répondre à une question répondre à une
+              question, faire répéter, et y répondre de façon simple, malgré des difficultés de prononciation et un
+              vocabulaire répétitif. Elle est capable de se présenter et de présenter l'identité de quelqu’un, de
+              connaître les mots pour décrire, nommer, indiquer et demander ou donner une information courte en
+              situation de question/réponse courte</div>
+            <div class="degre3" *ngIf="degre3DREO">La personne est capable d'interagir à l’oral, comprendre et
+              répondre à des questions ouvertes, même si elle fait parfois préciser les questions qu’on lui pose. Son
+              vocabulaire reste encore peu précis, mais elle agence les mots suivant les règles de fonctionnement du
+              français, adapte le ton, l’intonation, organise l’énoncé. Elle utilise les gestes d’appui du langage.
+            </div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DREO">DIEGO a permis d'identifier que la personne est en cours
+              d'acquisition de compétences permettant de répondre à une question simple et d'expliquer brièvement la
+              nature d'un document ou d'un métier</div>
+            <div class="degre2" *ngIf="degre2DREO">DIEGO permet de dire que la personne sait :- restituer un message
+              audio en entier, - expliquer la fonction d'un document (ex. : le bulletin de paie) - décrire une tâche
+              professionnelle (ex. : le métier de caissier)</div>
+            <div class="degre3" *ngIf="degre3DREO">DIEGO permet de dire que la personne sait :- formuler des
+              savoir-faire et des attentes (ex. : dire ce qu’elle sait faire et ce qui lui reste à apprendre),-
+              justifier une réponse (ex. : dire pourquoi on ne peut faire courir un chien au Parc de la lune), - donner
+              une explication (ex. : le sens d'un panneau d’interdiction), - verbaliser une démarche (ex. : présenter
+              clairement le trajet entre deux stations),- justifier un choix (ex. : dire à quelle heure partir de chez
+              elle pour un rendez-vous à la mairie)</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DREO">La personne peut maintenant viser l'acquisition et la stabilisation
+              de compétences permettant de répondre à une question, faire répéter, et y répondre de façon simple, malgré
+              des difficultés de prononciation. Ces compétences lui permettront de se présenter et de présenter
+              l'identité de quelqu’un, de connaître les mots pour décrire, nommer, indiquer et demander ou donner une
+              information courte en situation de question/réponse courte.</div>
+            <div class="degre2" *ngIf="degre2DREO">La personne peut maintenant viser l'acquisition et la stabilisation
+              de compétences permettant d'interagir à l’oral, comprendre et répondre à des questions ouvertes, même si
+              elle demande des précisions sur les questions qu’on lui pose. Ces compétences lui permettront d'agencer
+              les mots suivant les règles de fonctionnement du français, d'adapter le ton, l’intonation, d'organiser
+              l’énoncé</div>
+            <div class="degre3" *ngIf="degre3DREO">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant d'interagir à l’oral, faire des liens entre ses différentes
+              expériences, aborder de façon transversale des informations. Ces compétences lui permettront de produire
+              des discours courts (plusieurs phrases articulées par le sens), argumenter, donner son point de vue,
+              résoudre des problèmes complexes. Elle pourra utiliser des mots précis. Cela permet de se diriger vers une
+              appropriation progressive des codes socioculturels tels les registres de langue</div>
+          </td>
+        </tr>
+        <!-- ------------------------------------------------------------ -->
+        <tr>
+          <th scope="row">Calcul</th>
+          <td scope="row">
+            <div class="degres1" *ngIf="degre1DRCalcul">
+              <p class="text-info">degré 1 en cours</p>
+              La personne est en cours d'acquisition des compétences de degré 1.
+            </div>
+
+            <div class="degres2" *ngIf="degre2DRCalcul">
+              <p class="text-info">degré 2 en cours</p>
+              La personne a acquis des compétences de degré 1 et est en cours
+              d'acquisition de
+              certaines compétences de degré 2.</div>
+
+            <div class="degres3" *ngIf="degre3DRCalcul">
+              <p class="text-info">degré 3 en cours</p>
+              La personne a acquis des compétences de degré 2 et est en cours
+              d'acquisition de
+              certaines compétences de degré 3..</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRCalcul">La personne commence à identifier des premiers repères dans
+              l’univers des nombres, mais ne maîtrise pas encore la base de la numération</div>
+            <div class="degre2" *ngIf="degre2DRCalcul">La personne est capable de se repérer dans l’univers des
+              nombres, elle maîtrise la base de la numération. Elle fait correspondre un nombre à une quantité. Dans une
+              situation de vie quotidienne, elle sait quelle opération employer (l’addition) et explique la stratégie
+              qu’elle utilise. Elle sait quelles sont les mesures les plus usuelles (kilo, litre, mètre,
+              heure/minutes...). Elle maîtrise la lecture verticale et horizontale. Elle peut comparer, sélectionner,
+              trier et classifier.</div>
+            <div class="degre3" *ngIf="degre3DRCalcul">La personne est capable de dénombrer, lire et écrire des
+              nombres entiers de plus de 2 chiffres. Elle réalise des opérations dans une situation de vie quotidienne
+              (addition, soustraction). Elle peut lire, utiliser et interpréter les données présentées dans un tableau
+              ou un graphique. Elle associe un graphique à une situation donnée</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRCalcul">DIEGO a permis d'identifier que la personne est en cours
+              d'acquisition de compétences permettant :- d'inscrire une date (ex. : sa date de naissance dans le
+              formulaire d’identité),- d'additionner des nombres.</div>
+            <div class="degre2" *ngIf="degre2DRCalcul">DIEGO permet de dire que la personne sait :- inscrire une date
+              (ex. : sa date de naissance dans le formulaire d’identité),- additionner et soustraire des durées (ex. :
+              calculer l’ancienneté sur le poste de caissier)- additionner des nombres (ex. : nombre d'heures
+              travaillées dans le mois)</div>
+            <div class="degre3" *ngIf="degre3DRCalcul">DIEGO permet de dire que la personne sait :- additionner et/ou
+              diviser des nombres (ex. : calculer le nombre de métros par heure)- calculer ou estimer un horaire (ex. :
+              estimer son heure de départ du domicile pour arriver à la station Vieux Marché)- convertir une durée (ex.
+              : convertir en heures et minutes les informations issues du bulletin de paie),- diviser une durée (ex. :
+              calculer le nombre d’heures travaillées par jour)</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRCalcul">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant de se repérer dans l’univers des nombres, de maîtriser la base de
+              la numération et de faire correspondre un nombre à une quantité. Ces compétences lui permettront de
+              maîtriser la lecture verticale et horizontale, comparer, sélectionner, trier et classifier. Dans une
+              situation de vie quotidienne, elle saura quelle opération employer (l’addition) et expliquer la stratégie
+              qu’elle utilise. Elle connaîtra également les mesures les plus usuelles (kilo, litre, mètre,
+              heure/minutes...)</div>
+            <div class="degre2" *ngIf="degre2DRCalcul">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant de dénombrer, lire et écrire des nombres entiers de plus de 2
+              chiffres. Ces compétences lui permettront de réaliser des opérations dans une situation de vie quotidienne
+              (addition, soustraction), de lire, utiliser et interpréter les données présentées dans un tableau ou un
+              graphique et d'associer un graphique à une situation donnée</div>
+            <div class="degre3" *ngIf="degre3DRCalcul">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant de dénombrer, lire et écrire des grands nombres et des décimaux.
+              Ces compétences lui permettront de résoudre des problèmes complexes mettant en jeu l’addition, la
+              soustraction, la multiplication et la division. Elle saura utiliser la notion de pourcentage, faire des
+              opérations avec des nombres décimaux. Elle pourra résoudre des problèmes routiniers ou non de la vie
+              courante faisant appel à des mesures diverses (heure/minutes, longueur, masse, aire...). Elle pourra
+              également émettre des hypothèses et les vérifier, mais aussi associer formule, texte et graphique</div>
+          </td>
+        </tr>
+        <!-- ------------------------------------------------------------ -->
+        <tr>
+          <th scope="row">Se repérer dans l'espace</th>
+          <td>
+            <div class="degres1" *ngIf="degre1DRREspace">
+              <p class="text-info">degré 1 en cours</p>
+              La personne est en cours d'acquisition des compétences de degré 1.
+            </div>
+
+            <div class="degres2" *ngIf="degre2DRREspace">
+              <p class="text-info">degré 2 en cours</p>
+              La personne a acquis des compétences de degré 1 et est en cours
+              d'acquisition de
+              certaines compétences de degré 2.</div>
+
+            <div class="degres3" *ngIf="degre3DRREspace">
+              <p class="text-info">degré 3 en cours</p>
+              La personne a acquis des compétences de degré 2 et est en cours
+              d'acquisition de
+              certaines compétences de degré 3..</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRREspace">La personne commence à identifier de premiers repéres dans
+              l’espace : situer la droite et la gauche sur soi, connaitre quelques premiers termes de vocabulaire.</div>
+            <div class="degre2 " *ngIf="degre2DRREspace">La personne est capable de se repérer dans l’espace. On parle
+              de repères structurants. Elle situe la droite et la gauche sur soi, maîtrise le vocabulaire : à côté, en
+              face, devant, derrière. Elle arrive difficilement ou pas du tout à se situer dans une région, un pays et
+              ne peut faire la relation avec une carte. Elle est capable de situer un écrit simple dans un espace
+              graphique usuel, mais respecte l’organisation d’un modèle.</div>
+            <div class="degre3" *ngIf="degre3DRREspace">La personne est capable de situer différentes composantes de
+              l’espace sur un plan, une carte. Les réponses aux questions relatives à la lecture et à la compréhension
+              d’un plan ou d’une carte sont justes. Les informations utiles en sont extraites. Elle trace des trajets
+              connus sur une carte du pays, du monde. Elle prend des repères.</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRREspace">DIEGO a permis d'identifier que la personne est en cours
+              d'acquisition de compétences permettant de :- se repérer dans un document (ex. : trouver deux institutions
+              sur le plan de la ville), - repérer des indices sur un plan (ex. : identifier quel établissement indique
+              qu’il est interdit de fumer)</div>
+            <div class="degre2" *ngIf="degre2DRREspace">DIEGO permet de dire que la personne sait :- lire un plan (ex.
+              : identifier la station la plus proche de la mairie),- se repérer dans un document (ex. : repérer deux
+              organismes sur le plan de la ville)- repérer des indices sur un plan (ex. : identifier quel établissement
+              indique l'interdiction de fumer)</div>
+            <div class="degre3" *ngIf="degre3DRREspace">DIEGO permet de dire que la personne sait :- s’orienter sur
+              un plan (ex. : identifier sur la carte les établissements au sud de la ville),- identifier et décrire un
+              trajet (ex. : description du trajet entre deux stations de métro).</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRREspace">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant de se repérer dans l’espace (repères structurants). Ces
+              compétences lui permettront de situer la droite et la gauche sur soi, des maîtriser le vocabulaire y
+              afférent (à côté, en face, devant, derrière), mais également de situer un écrit simple dans un espace
+              graphique usuel, en respectant l’organisation d’un modèle.</div>
+            <div class="degre2" *ngIf="degre2DRREspace">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant de situer différentes composantes de l’espace sur un plan, une
+              carte. Ces compétences lui permettront de répondre correctement aux questions relatives à la lecture et à
+              la compréhension d’un plan ou d’une carte, d'en extraire les informations utiles et de tracer des trajets
+              connus sur une carte du pays, du monde en ayant pris des repères</div>
+            <div class="degre3" *ngIf="degre3DRREspace">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant de permettant d'organiser mentalement un déplacement, trouver des
+              informations dans des tableaux à double entrée. Ces compétences lui permettront de se situer sur une carte
+              ou un plan, de la ville, d’un pays, du monde. Elle pourra utiliser correctement l’espace graphique sans
+              aide ni modèle</div>
+          </td>
+        </tr>
+        <!-- ------------------------------------------------------------ -->
+        <tr>
+          <th scope="row">Se repérer dans le temps</th>
+          <td>
+            <div class="degres1" *ngIf="degre1DRRTemps">
+              <p class="text-info">degré 1 en cours</p>
+              La personne est en cours d'acquisition des compétences de degré 1.
+            </div>
+
+            <div class="degres2" *ngIf="degre2DRRTemps">
+              <p class="text-info">degré 2 en cours</p>
+              La personne a acquis des compétences de degré 1 et est en cours
+              d'acquisition de
+              certaines compétences de degré 2.</div>
+
+            <div class="degres3" *ngIf="degre3DRRTemps">
+              <p class="text-info">degré 3 en cours</p>
+              La personne a acquis des compétences de degré 2 et est en cours
+              d'acquisition de
+              certaines compétences de degré 3..</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRRTemps">La personne commence à avoir quelques points de repère dans le
+              temps mais agit dans le présent avec des références peu précises</div>
+            <div class="degre2" *ngIf="degre2DRRTemps">La personne est capable de se situe dans son histoire familiale
+              grâce à des points de repère dans le temps. Elle a la notion des dates proches et agit dans le présent
+              mais elle a encore peu de projets, peu de références précises ou passé lointain et répond de façon floue
+              ou inexacte à des questions sur la chronologie. Elle a cependant la notion de temps “légal” (horaires ou
+              jours fériés). Elle commence, encore avec difficulté, à prévoir et mesurer le temps nécessaire à
+              l’accomplissement de tâches, dans des environnements connus.</div>
+            <div class="degre3" *ngIf="degre3DRRTemps">La personne est capable defaire correspondre son âge et sa
+              date de naissance. Elle lit l’heure et la date, connaît les outils de mesure du temps (montre,
+              calendrier...), elle situe l'événement chronologiquement. Elle peut prévoir un temps de déplacement. Elle
+              peut également lire un tableau à double entrée, faire une conversion des durées, expliquer les étapes dans
+              leur enchaînement (succession)</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRRTemps">DIEGO a permis d'identifier que la personne est en cours
+              d'acquisition de compétences permettant de : - se repérer dans le temps (ex. : renseigner sa date de
+              naissance dans le formulaire d’identité)- mémoriser une date (ex. : donner la date de son dernier emploi
+              ou stage).</div>
+            <div class="degre2" *ngIf="degre2DRRTemps">DIEGO permet de dire que la personne sait : - se repérer dans
+              le temps (ex. : renseigner sa date de naissance dans le formulaire d’identité),- mémoriser une date (ex. :
+              donner la date de son dernier emploi ou stage),- identifier une fréquence (ex. : faire le lien entre les
+              informations du panneau et la date du jour),- identifier des horaires (ex. : comprendre que la mairie est
+              fermée à l’heure du déjeuner),- identifier une durée (ex. : dire si le salarié a fait des heures
+              supplémentaires)</div>
+            <div class="degre3" *ngIf="degre3DRRTemps">DIEGO permet de dire que la personne sait :- se repérer dans
+              les heures (ex. : explications sur l’impossibilité de se rendre à la mairie en raison de son heure de
+              fermeture),- estimer une durée (ex. : calculer le temps pour arriver à la mairie en partant de Cheverny),-
+              positionner un évènement dans le temps (ex. : dire quelle était l’ancienneté du salarié sur le poste de
+              travail)</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRRTemps">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettantd'avoir des points de repère dans le temps, de se situer dans son
+              histoire familiale, avec la notion des dates proches et de temps “légal” (horaires ou jours fériés). Ces
+              compétences lui permettront de répond de façon approximative à des questions sur la chronologie dans des
+              environnements connus.</div>
+            <div class="degre2" *ngIf="degre2DRRTemps">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant de faire correspondre son âge et sa date de naissance, lire
+              l’heure et la date, connaître les outils de mesure du temps (montre, calendrier...), et situer un
+              événement chronologiquement. Ces compétences lui permettront de prévoir un temps de déplacement, de lire
+              un tableau à double entrée, de faire une conversion des durées. Elle sera capable d’expliquer les étapes
+              dans leur enchaînement (succession).</div>
+            <div class="degre3" *ngIf="degre3DRRTemps">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant d'établir des correspondances temps/actions (agenda, délais,
+              périodicité...), s’organiser et planifier son temps (définir, prévoir, calculer une durée), se projeter et
+              anticiper sa mobilité. Ces compétences lui permettront d'utiliser facilement des horaires de bus, train,
+              mais aussi concevoir des projets à moyen et long terme.</div>
+          </td>
+        </tr>
+        <!-- ------------------------------------------------------------ -->
+        <tr>
+          <th scope="row">Numérique</th>
+          <td>
+            <div class="degres1" *ngIf="degre1DRNumerique">
+              <p class="text-info">degré 1 en cours</p>
+              La personne est en cours d'acquisition des compétences de degré 1.
+            </div>
+
+            <div class="degres2" *ngIf="degre2DRNumerique">
+              <p class="text-info">degré 2 en cours</p>
+              La personne a acquis des compétences de degré 1 et est en cours
+              d'acquisition de
+              certaines compétences de degré 2.</div>
+
+            <div class="degres3" *ngIf="degre3DRNumerique">
+              <p class="text-info">degré 3 en cours</p>
+              La personne a acquis des compétences de degré 2 et est en cours
+              d'acquisition de
+              certaines compétences de degré 3..</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRNumerique">La personne commence à entrer identifier les fonctionnalités
+              élémentaires d’un environnement numérique : allumer et éteindre un ordinateur, communiquer par textos.
+            </div>
+            <div class="degre2" *ngIf="degre2DRNumerique">La personne est capable d'utiliser les fonctionnalités
+              élémentaires d’un environnement numérique : allumer et éteindre un ordinateur, envoyer un mail à un
+              destinataire, communiquer par textos. Le navigateur internet est ouvert puis utilisé correctement. La
+              connexion et la déconnexion de la messagerie électronique sont réussies. La personne sait lire un courriel
+              avec ou sans pièce jointe. La structure du document est identifiée et comprise</div>
+            <div class="degre3" *ngIf="degre3DRNumerique">La personne est capable d'envoyer un mail à plusieurs
+              destinataires, renseigner un formulaire en ligne sans aide, envoyer une pièce jointe. Elle sait également
+              utiliser un logiciel audio ou vidéo. Le texte simple est saisi correctement. Le formulaire numérique est
+              renseigné et enregistré correctement. </div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRNumerique">DIEGO a permis d'identifier que la personne est en cours
+              d'acquisition de compétences permettant de : - communiquer par texto/sms (ex. : savoir envoyer des textos,
+              avec ou sans aide) - démarrer la lecture d'un fichier audio (ex. : savoir lancer un fichier son)</div>
+            <div class="degre2" *ngIf="degre2DRNumerique">DIEGO permet de dire que la personne sait :- utiliser une
+              messagerie électronique (ex. : adresse mail),- communiquer par texto/sms (ex. : envoyer des textos, avec
+              ou sans aide),- démarrer la lecture d'un fichier audio (ex. lancer un fichier son)</div>
+            <div class="degre3" *ngIf="degre3DRNumerique">DIEGO permet de dire que la personne sait :- utiliser un
+              ordinateur (ex. : se servir du clavier, de la souris, du pavé tactile),- utiliser le carnet d'adresse
+              d'une messagerie (ex. : envoyer un e-mail à plusieurs personnes),- remplir un formulaire en ligne (ex. :
+              renseigner un formulaire d’identité),- utiliser un logiciel audio (ex. : arrêter le message enregistré et
+              le faire repartir au début de l'enregistrement)</div>
+          </td>
+          <td>
+            <div class="degre1" *ngIf="degre1DRNumerique">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant d'utiliser les fonctionnalités élémentaires d’un environnement
+              numérique : allumer et éteindre un ordinateur, envoyer un mail à un destinataire, communiquer par textos,
+              utiliser un navigateur internet ouvert, connecter et déconnecter la messagerie électronique. Ces
+              compétences lui permettront de lire un courriel avec ou sans pièce jointe et d'identifier et de comprendre
+              la structure du document.</div>
+            <div class="degre2" *ngIf="degre2DRNumerique">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant d'envoyer un mail à plusieurs destinataires, de renseigner un
+              formulaire en ligne sans aide, d'envoyer une pièce jointe. Ces compétences lui permettront d'utiliser un
+              logiciel audio ou vidéo, de saisir correctement un texte simple. Elle pourra renseigner un formulaire
+              numérique enregistré correctement.</div>
+            <div class="degre3" *ngIf="degre3DRNumerique">La personne peut maintenant viser l'acquisition et la
+              stabilisation de compétences permettant d’envoyer un nouveau message électronique ou une réponse à un ou
+              plusieurs destinataires et de rédiger correctement le corps du message. Ces compétences lui permettront de
+              saisir correctement un texte simple et de se projeter dans le temps</div>
+          </td>
+        </tr>
+
+
+
+
+      </tbody>
+    </table>
+
+
+  </div>
+
+
+  <!---------------------    les degres evolution     !------------ -->
+
+  <!-- div fin resultat des question -->
+  <div class=" container alert alert-dark mt-4 text-center " *ngIf="detaiQuestions">
+    Radar
+  </div>
+
+  <div class="container mt-4" style="width: 600px; height: 300px;">
+    <canvas id="myChart" width="600" height="200"></canvas>
+  </div>
+
+  <!-- <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">CE</th>
+        <th scope="col">CO</th>
+        <th scope="col">Cal</th>
+        <th scope="col">EE</th>
+        <th scope="col">EO</th>
+        <th scope="col">Num</th>
+        <th scope="col">REspace</th>
+        <th scope="col">RTemps</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{DRCE}}</th>
+        <td>{{DRCO}}</td>
+        <td>{{DRCalcul}}</td>
+        <td>{{DREE}}</td>
+        <td>{{DREO}}</td>
+        <td>{{DRNumerique}}</td>
+        <td>{{DRREspace}}</td>
+        <td>{{DRRTemps}}</td>
+      </tr>
+    </tbody>
+  </table> -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <h1>
+    ici c'est individiul 
+  </h1>
+  <div *>
+
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<h2 class="text-center text-info m-5 ">Les resultats</h2>
+
+
+<div class="row" >
+   <div class="col-9">
+    <table class=" table bg-light border rounded p-2">
+      <thead class="">
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Utilisateur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of diag"  >
+          <td>{{d.myDate | date:'d/M/yyyy'}} </td>
+          <td>{{d.prenom}}</td>
+          <td>{{d.uid}}</td>
+          <td>{{d.nom | slice:0:2}} </td>
+          <td><button class="btn btn-danger" (click)="delete(d.id)">X</button></td> 
+        
+          <td >  <button (click)="getUserData(d.uid)" class="btn btn-info ">
+             Voir Accompanateur =></button></td>
+        </tr>
+      </tbody>
+    </table>
+   </div>
+
+   <div class="col-3 position-relative mt-5">
+     informations  
+    <br>
+    <strong>Nom  : </strong> {{object.firstName}} <br>
+    <strong>Prenom  : </strong> {{object.lastName}} <br>
+    <strong>Email : </strong>   {{object.email}}
+   </div>
+  </div>

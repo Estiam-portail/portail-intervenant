@@ -1,0 +1,118 @@
+<div class="container">
+
+  <h4 class="text-center  mt-4 font-weight-bold mb-4 ">
+    Séquence 2 : S’INSCRIRE SUR DIEGO !
+  </h4>
+
+  <form #f="ngForm" (ngSubmit)="identity(f)" class="border border-primar rounded p-4 text-muted">
+    <div class="form-group form-check">
+      <label class="form-check-label mr-4">
+        <input class="form-check-input" ngModel name="genre" value="madame" type="radio"> Madame
+      </label>
+      <label class="form-check-label ml-4">
+        <input class="form-check-input" ngModel name="genre" value="monsieur" type="radio"> Monsieur
+      </label>
+    </div>
+    <!-- **************************************************************************
+     -->
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label>Prenom</label>
+        <input type="text" class="form-control" name="prenom" ngModel>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Nom</label>
+        <input type="text" class="form-control" name="nom" ngModel>
+      </div>
+    </div>
+    <!------------------------------------------------------------------------------>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label>Date de naissance</label>
+        <input type="date" class="form-control" name="dateNaissance" ngModel>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Lieu de naissance</label>
+        <input type="text" class="form-control" name="lieuNaissance" ngModel>
+      </div>
+    </div>
+
+    <!--------------------------------   contacte  -------------->
+    <div class="form-group">
+      <label for="inputAddress2">Adresse</label>
+      <input type="text" class="form-control" name="adresse" ngModel>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">Ville</label>
+        <input type="text" class="form-control" name="ville" ngModel>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputZip">Code postal</label>
+        <input type="text" class="form-control" name="codePostale" ngModel>
+      </div>
+    </div>
+    <!--------------------------------------------------------------->
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label>N° de téléphone</label>
+        <input type="text" class="form-control" name="telephone" ngModel>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Email</label>
+        <input type="email" class="form-control" name="email" ngModel>
+      </div>
+    </div>
+
+
+    <!-------------      emplois   ------------------>
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label>Profession / métier</label>
+        <input type="text" class="form-control" name="metier" ngModel>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label> Statut</label><br>
+        <label class="form-check-label ml-4 mr-4">
+          <input class="form-check-input" ngModel name="status" value="Salarié" type="radio"> Salarié
+        </label>
+        <label class="form-check-label ml-4 mr-4 ">
+          <input class="form-check-input" ngModel name="status" value="Indépendant" type="radio"> Indépendant
+        </label>
+        <label class="form-check-label ml-4  ">
+          <input class="form-check-input " ngModel name="status" value="Demandeur d'emploi" type="radio"> Demandeur
+          d’emploi
+        </label>
+      </div>
+      <div class="col-md-6">
+        <label>Autre :</label>
+        <input type="text" class="form-control" name="autre" ngModel>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="form-group col-md-6">
+        <label>Dernier emploi (ou stage) occupé</label>
+        <input type="text" class="form-control" name="derniereEmploi" ngModel>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Dates de cet emploi</label>
+        <input type="date" class="form-control" name="dateEmploi" ngModel>
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btnbg float-right"><i class="fas fa-forward pl-4 pr-4"></i></button>
+
+
+  </form>
+
+
+
+</div>

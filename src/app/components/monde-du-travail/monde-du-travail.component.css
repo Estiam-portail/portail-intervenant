@@ -1,0 +1,25 @@
+.text{
+    color: #ea553c;
+}
+.btnbg{
+    background-color: #a9d7c8;
+}
+
+figure {
+    margin: 0;
+}
+h5{
+    color:#a9d7c8;
+}
+
+
+.footer {
+    background: #545454;
+    height: 100px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }

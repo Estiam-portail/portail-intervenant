@@ -1,0 +1,650 @@
+<div class="container mt-4 mb-4">
+    <div class="float-end"><button class="btn btn-info border rounded-circle fixed-top mt-5">
+        <span >{{compt}}/40 </span>  <span >{{comptService.compteur}}/40 </span> 
+    </button>
+    </div>
+    <h4 class="text-center  mt-4 font-weight-bold mb-4 ">
+        SE DEPLACER EN VILLE.
+    </h4>
+</div>
+
+<div class="container p-4">
+    <h5 class="container text-center border-top pt-4 border-danger"> ACTIVITE N°3: Se repérer dans l’espace et dans le
+        temps</h5>
+    <form #f="ngForm" (ngSubmit)="SeDeplacerEnVille(f)" class="border border-primar rounded p-4 text-muted">
+
+        <!----------------------------------       question  un  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-12 bg-light border border-dark rounded p-4">
+                <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
+                    Nous allons maintenant travailler sur les déplacements. Je vous laisse découvrir ce document (30
+                    secondes), puis je
+                    vais vous poser des questions.
+                    <br><p class="text-muted"><i class="fab text-secondary mr-4 fa-font-awesome-flag"></i>Sortir le
+                        plan
+                        de la «ville de Moulinsart» et le placer face à la personne
+                        reçue</p>
+                </p>
+            </div>
+        </div>
+        <!-----------------------------------   fin question un ---------------------------------->
+
+
+        <!----------------------------------       question  deux  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
+                    Est-ce que vous pouvez me dire ce qu’est ce document ?
+                </p>
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">15) La personne a-t-elle réussi à répondre à la question ? </p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input class="form-check-input "
+                        (change)="handleChangequesQuinze($event)" 
+                        [(ngModel)]="quesquinze"
+                        name="quesquinze" value="oui" type="radio" required>OUI, elle a
+                        su répondre correctement
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesQuinze($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesquinze"
+                            name="quesquinze" value="non" type="radio" required>NON, elle
+                            n’a pas su répondre
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question deux ---------------------------------->
+
+
+
+
+
+
+        <!----------------------------------       question  troix  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
+                    Regardez bien ce plan et dites-moi quelle est la station de métro la plus proche de la mairie ?
+                </p>
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">16) La personne a-t-elle cité la station de métro la plus proche de la mairie?</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input class="form-check-input "
+                        (change)="handleChangequesSeize($event)" 
+                        [(ngModel)]="quesseize"
+                        name="quesseize" value="oui" type="radio" required>OUI, elle a
+                        su répondre correctement
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input class="form-check-input" (change)="handleChangequesSeize($event)"
+                            [(ngModel)]="quesseize"
+                            name="quesseize" value="non" type="radio" required>NON, elle
+                            n’a pas su répondre
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question troix ---------------------------------->
+
+
+
+
+
+        <!----------------------------------       question  cenque  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
+                    Pouvez-vous me montrer où se trouvent la Mission locale et le CFA?
+                </p>
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">17) La personne a-t-elle montré les 2 endroits?</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input class="form-check-input "
+                        (change)="handleChangequesDixsept($event)" 
+                        [(ngModel)]="quesdixsept"
+                        name="quesdixsept" value="oui" type="radio" required>OUI, elle a
+                        repéré les deux endroits sur le
+                        plan
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesDixsept($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesdixsept"
+                            name="quesdixsept" value="ouienpartie"
+                                type="radio" required>OUI EN PARTIE, elle n’a repéré qu’un des
+                            deux endroits sur le plan
+                        </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input class="form-check-input" 
+                            (change)="handleChangequesDixsept($event)" 
+                            [(ngModel)]="quesdixsept"
+                            name="quesdixsept" value="non" type="radio" required>NON
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-----------------------------------   fin question cenque ---------------------------------->
+
+
+
+
+        <!----------------------------------       question  quatre  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
+                    En regardant la carte, diriez-vous que c’est le CFA ou la Mission locale qui se trouve au sud de la
+                    ville ?
+                </p>
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">18) La personne a-t-elle réussi à répondre à la question?</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input class="form-check-input " 
+                        (change)="handleChangequesDixhuit($event)" 
+                        [(ngModel)]="quesdixhuit"
+                        name="quesdixhuit" value="oui" type="radio" required>OUI
+                    </label>
+                    <div>
+                        <div>
+                            <label class="form-check-label mr-4">
+                                <input (change)="handleChangequesDixhuit($event)" 
+                                class="form-check-input " 
+                                [(ngModel)]="quesdixhuit"
+                                name="quesdixhuit" value="ouienpartie"
+                                    type="radio" required>OUI EN PARTIE, elle a compris la
+                                question mais n'y a pas bien répondu
+                            </label>
+                        </div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesDixhuit($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesdixhuit"
+                            name="quesdixhuit" value="non" type="radio" required>NON
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question quatre ---------------------------------->
+
+
+
+        <!----------------------------------       question  six  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
+                    Vous avez un chien et vous voulez aller vous promener avec lui. <br> Pouvez-vous le faire courir au
+                    parc du Clair de Lune et m’expliquer pourquoi ?
+                </p>
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">19) La personne a-t-elle réussi à répondre à la question?</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input class="form-check-input "
+                        (change)="handleChangequesDixneuf($event)" 
+                        [(ngModel)]="quesdixneuf"
+                        name="quesdixneuf" value="oui" type="radio" required>OUI, elle a
+                        repéré l’icône et a répondu à la
+                        question
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesDixneuf($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesdixneuf"
+                            name="quesdixneuf" value="non" type="radio" required>NON,
+                            elle n’a pas repéré l’icône
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question six ---------------------------------->
+
+
+
+        <!----------------------------------       question  sept  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
+                    Nous savons qu’il est interdit de fumer dans tous les établissements.<br>Mais sur ce plan, un
+                    établissement l’indique spécifiquement. Lequel?
+                </p>
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">20) La personne a-t-elle désigné l'établissement?</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input class="form-check-input "
+                        (change)="handleChangequesVingt($event)" 
+                        [(ngModel)]="quesvingt"
+                        name="quesvingt" value="oui" type="radio" required>OUI, elle a
+                        repéré l’icône et l’a associée à
+                        Pôle Emploi
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingt($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesvingt"
+                            name="quesvingt" value="non" type="radio" required>NON
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question 7 ---------------------------------->
+
+
+
+
+
+
+
+        <!----------------------------------       question  8  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p class=" text-muted"> <i class="fab text-secondary mr-4 fa-font-awesome-flag"></i>
+                    Montrer le panneau suivant:
+                </p>
+
+                <p><i class=" text-danger mr-4 fas fa-question-circle"></i>Regardez ce panneau, pouvez-vous lire à voix
+                    haute ce qui est écrit? </p>
+
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">21) La personne a-t-elle réussi à lire ce qui est écrit? </p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesVingtun($event)" class="form-check-input "
+                        [(ngModel)]="quesvingtun" 
+                        name="quesvingtun" value="oui" type="radio" required>OUI, la
+                        personne a su lire ce qui est écrit
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingtun($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesvingtun" 
+                            name="quesvingtun" value="non" type="radio" required>NON
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question 8 ---------------------------------->
+
+
+
+
+
+
+        <!----------------------------------       question  9  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+
+                <p><i class=" text-danger mr-4 fas fa-question-circle"></i>Comment comprenez-vous ce panneau?</p>
+
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">22) La personne a-t-elle compris et expliqué le sens du panneau? </p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesVingtdeux($event)" 
+                        class="form-check-input " 
+                        [(ngModel)]="quesvingtdeux" 
+                        name="quesvingtdeux" value="oui" type="radio" required>OUI, elle
+                        comprend le sens du panneau et
+                        l’explique clairement
+                    </label>
+                    <p>
+                        <label class="form-check-label mr-4">
+                            <input (change)="handleChangequesVingtdeux($event)"  
+                            class="form-check-input " 
+                            [(ngModel)]="quesvingtdeux" 
+                            name="quesvingtdeux" value="ouienpartie"
+                                type="radio" required>OUI EN PARTIE, elle a compris le sens mais a eu du mal à l'expliquer
+                        </label>
+
+                    </p>
+
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingtdeux($event)" 
+                             class="form-check-input" 
+                             [(ngModel)]="quesvingtdeux" 
+                             name="quesvingtdeux" value="non" type="radio" required>NON,
+                            elle n’a pas compris le sens du
+                            panneau
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question 9 ---------------------------------->
+
+
+
+
+
+
+
+        <!----------------------------------       question  10  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+
+                <p><i class=" text-danger mr-4 fas fa-question-circle"></i>Nous sommes aujourd’hui le 
+                    {{myDate  | date: 'dd / MM / yyyy'}} ,  Dites-moi si vous pourriez stationner à cet endroit-là aujourd’hui et pourquoi?</p>
+
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">23) La personne a-t-elle réussi à répondre à la question?</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input class="form-check-input "
+                        (change)="handleChangequesVingttroix($event)"  
+                        [(ngModel)]="quesvingtroix" 
+                        name="quesvingtroix" value="oui" type="radio" required>OUI, la
+                        personne a bien compris le sens du
+                        panneau et fait le lien avec la date, elle répond correctement en justifiant sa réponse
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingttroix($event)" 
+                             class="form-check-input" 
+                             [(ngModel)]="quesvingtroix" 
+                             name="quesvingtroix" value="ouienpartie"
+                                type="radio" required>OUI, avec de l’aide
+                        </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingttroix($event)"  
+                            class="form-check-input" 
+                            [(ngModel)]="quesvingtroix" 
+                            name="quesvingtroix" value="non" type="radio" required>NON,
+                            elle n’a pas compris le sens du
+                            panneau
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question 10 ---------------------------------->
+
+
+
+
+        <!----------------------------------       question  11  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+
+                <p><i class=" text-danger mr-4 fas fa-question-circle"></i>Regardez à nouveau le plan et dites-moi si la
+                    Mairie est ouverte ou fermée à l’heure du déjeuner et dites-moi comment vous le savez?</p>
+
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">24) La personne a-t-elle réussi à répondre à la question</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesVingtquatre($event)" 
+                         class="form-check-input " 
+                         [(ngModel)]="quesvingtquatre" 
+                         name="quesvingtquatre" value="oui" type="radio" required>OUI,
+                        elle a su répondre correctement à la
+                        question et donner une explication logique
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingtquatre($event)"
+                             class="form-check-input"
+                             [(ngModel)]="quesvingtquatre"
+                              name="quesvingtquatre" value="ouienpartie"
+                                type="radio" required>OUI, avec de l’aide
+                        </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingtquatre($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesvingtquatre"
+                            name="quesvingtquatre" value="non" type="radio" required>NON
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question 11 ---------------------------------->
+
+
+
+
+
+        <!----------------------------------       question  12  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+
+                <p><i class=" text-danger mr-4 fas fa-question-circle"></i>Vous terminez votre travail à 6 heures du
+                    soir,
+                    et vous êtes à 5 minutes à pied de la mairie:<br>Avez-vous encore le temps d’y aller ? Dites-moi
+                    pourquoi</p>
+
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">25) La personne a-t-elle réussi à répondre à la question</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesVingtcenq($event)"
+                         class="form-check-input " 
+                         [(ngModel)]="quesvingtcenque"
+                         name="quesvingtcenque" value="oui" type="radio" required>OUI,
+                        elle a su répondre correctement et a expliqué clairement que la mairie fermait à 17h30.
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingtcenq($event)" 
+                            [(ngModel)]="quesvingtcenque"
+                            class="form-check-input" ngModel name="quesvingtcenque" value="non" type="radio" required>NON
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question 12 ---------------------------------->
+
+
+
+
+
+
+        <!----------------------------------       question  13  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+
+                <p><i class=" text-danger mr-4 fas fa-question-circle"></i>Regardez à nouveau le plan. Vous habitez près
+                    de
+                    la station Cheverny, vous devez aller rechercher un document à la mairie. Il pleut et vous décidez
+                    de
+                    prendre le métro.<br>Expliquez-moi votre trajet et dites-moi quelles directions de métro il faut
+                    prendre.</p>
+
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">26) La personne a-t-elle réussi à répondre à la question</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesVingtsix($event)"
+                         class="form-check-input " 
+                         [(ngModel)]="quesvingtsix"
+                         name="quesvingtsix" value="oui" type="radio" required>OUI, et
+                        elle a expliqué clairement le trajet
+                        de la station Cheverny à la station Hôtel de ville
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingtsix($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesvingtsix"
+                            name="quesvingtsix" value="ouienpartie"
+                                type="radio" required>OUI EN PARTIE, elle a répondu correctement
+                            à la question mais son explication était peu claire
+                        </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input  (change)="handleChangequesVingtsix($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesvingtsix"
+                            name="quesvingtsix" value="non" type="radio" required>NON
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question 13 ---------------------------------->
+
+
+
+
+
+
+        <!----------------------------------       question  14  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+
+                <p><i class=" text-danger mr-4 fas fa-question-circle"></i>Regardez maintenant le petit tableau qui
+                    indique
+                    la fréquence des métros pour chaque ligne et dites-moi : <br>Pour la ligne A : combien de métros passent
+                    à
+                    chaque station en une heure?<br>Et pour la ligne B?</p>
+
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">27) La personne a-t-elle réussi à répondre à la question</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesVingtsept($event)" 
+                        class="form-check-input " 
+                        [(ngModel)]="quesvingtcept"
+                        name="quesvingtcept" value="oui" type="radio" required>OUI,
+                        correctement aux 2 questions
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingtsept($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesvingtcept"
+                            name="quesvingtcept" value="ouienpartie"
+                                type="radio" required>OUI EN PARTIE, 1 réponse correcte </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingtsept($event)"
+                             class="form-check-input" 
+                             [(ngModel)]="quesvingtcept"
+                             name="quesvingtcept" value="non" type="radio" required>NON
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question 14 ---------------------------------->
+
+
+
+
+
+        <!----------------------------------       question  15  ------------------------------------>
+        <div class="row m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+
+                <p><i class=" text-danger mr-4 fas fa-question-circle"></i>Vous avez rendez-vous à la Mairie à 16
+                    heures,
+                    vous êtes à 5 minutes à pied de la station Cheverny. Le métro met 2 minutes entre 2 stations et vous
+                    devez changer à la station Vieux Marché. Le changement de ligne prend 3 minutes. <br>À quelle heure
+                    devez-vous partir de chez vous? Essayez de faire le calcul à voix haute et de me l’expliquer.
+                    Regardez bien
+                    à quelle heure et à quelle fréquence partent les métros de vos deux lignes.</p>
+                    <br/>Aide possible
+                <br><p class="text-muted"><i class="fab text-secondary mr-4 fa-font-awesome-flag"></i><strong>Proposer la
+                    consigne par écrit</strong></p>
+            </div>
+            <div class="col-md-6">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">28) La personne a-t-elle réussi à répondre à la question et à la justifier ?</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesVingthuit($event)" 
+                        class="form-check-input " 
+                        [(ngModel)]="quesvingthuit"
+                        name="quesvingthuit" value="oui" type="radio" required>OUI,
+                        calcul et raisonnement corrects
+                    </label>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input (change)="handleChangequesVingthuit($event)" 
+                            class="form-check-input" 
+                            [(ngModel)]="quesvingthuit"
+                            name="quesvingthuit" value="ouienpartie"
+                                type="radio" required>OUI EN PARTIE,son raisonnement est bon mais
+                            elle n’a pas bien calculé le temps (ou l’inverse)
+                        </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label  ">
+                            <input class="form-check-input" 
+                            [(ngModel)]="quesvingthuit"
+                            name="quesvingthuit" value="non" type="radio" required>NON
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question 15 ---------------------------------->
+
+
+
+        <!-- <div class="row text-center">
+            <div class="col-6"><button class="btn btnbg float-left" routerLink="/activiteidentitiesuite"><i class="fas fa-backward pl-4 pr-4"></i></button></div>
+
+            <div class="col-6"><button type="submit" class="btn btnbg float-right"><i
+                        class="fas fa-forward pl-4 pr-4"></i></button>
+            </div>
+        </div> -->
+
+        <button type="submit required" class="btn btnbg float-right mr-4 mb-4" [disabled]="!f.form.valid"><span class="text-danger" *ngIf="!f.form.valid">Suite : répondre à toutes les questions</span><i
+            class="fas fa-forward pl-4 pr-4"></i></button>
+    </form>
+</div>
