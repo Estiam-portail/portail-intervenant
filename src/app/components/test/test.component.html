@@ -16,9 +16,9 @@
         <tr *ngFor="let d of diag"  >
           <td>{{d.myDate | date:'d/M/yyyy'}} </td>
           <td>{{d.prenom}}</td>
-          <td>{{d.uid}}</td>
-          <td>{{d.nom | slice:0:2}} </td>
-          <td><button class="btn btn-danger" (click)="delete(d.id)">X</button></td> 
+          <!-- <td>{{d.uid}}</td> -->
+          <td>{{d.nom }} </td>
+          <!-- <td><button class="btn btn-danger" (click)="delete(d.id)">X</button></td>  -->
         
           <td >  <button (click)="getUserData(d.uid)" class="btn btn-info ">
              Voir Accompanateur =></button></td>

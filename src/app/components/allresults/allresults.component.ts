@@ -6,6 +6,12 @@ import Chart from 'chart.js/auto'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+
+
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
+
 @Component({
   selector: 'app-allresults',
   templateUrl: './allresults.component.html',
@@ -196,7 +202,7 @@ export class AllresultsComponent implements OnInit {
         
       })
 
-      console.log("diag : ", this.diag);
+      // console.log("diag : ", this.diag);
     });
 
     //   ***********************    fin select  * ****************************************
@@ -387,10 +393,11 @@ export class AllresultsComponent implements OnInit {
       var chart = new Chart('myChart', {
         type: 'radar',
         data: {
-          labels: ['COMPREHENSION ECRITE', 'ÉCRIRE',
-           'COMPRENDRE à l\'ORAL', 'CALCULER', 'S’EXPRIMER à l’oral',
-            'Se repérer dans l’ESPACE', 'Se repérer dans le TEMPS', 
-            'Utiliser les outils NUMERIQUES'],
+          labels: [`COMPREHENSION ECRITE,  d ${this.DReCE}`, `ÉCRIRE, d ${this.DReEE}`,
+           `COMPRENDRE à l\'ORAL, d ${this.DReCO}`, `CALCULER, d ${this.DReCalcul}`, `S’EXPRIMER à l’oral, d ${this.DReEO}`,
+            `Se repérer dans l’ESPACE, d ${this.DReREspace}`,
+             `Se repérer dans le TEMPS, d ${this.DReRTemps}`, 
+            `Utiliser les outils NUMERIQUES, d ${this.DReNumerique}`],
           datasets: [{
             label: ' Résultats en degré',
             data: [
@@ -469,6 +476,76 @@ export class AllresultsComponent implements OnInit {
 
 
 
+  public openPDF(): void {
+    let DATA: any = document.getElementById('htmlData');
+    html2canvas(DATA).then((canvas) => {
+        `<p>tata</p>`
+      let fileWidth = 208;
+
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+ 
+      PDF.save('angular-demo.pdf');
+      
+    });
+  }
+
+
+
+
+
+
+  onTelechargeCompetence(){
+    let DATA: any = document.getElementById('table');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+ 
+      PDF.save('angular-demo.pdf');
+      
+    });
+  }
+
+
+
+
+
+  onTelechargeRadar(){
+    let DATA: any = document.getElementById('radar');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('angular-demo.pdf');   
+    });
+  }
+  onTelechargReca(){
+    let DATA: any = document.getElementById('reca');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+ 
+      PDF.save('angular-demo.pdf');
+      
+    });
+
+  }
 
 
 

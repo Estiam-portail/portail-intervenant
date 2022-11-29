@@ -42,6 +42,7 @@ export class FichierAudioComponent{
     this.quesTroix = localStorage.getItem("valeurQuestiontroix")
     this.quesQuatre = localStorage.getItem("valeurQuestionquatre")
     this.quesCenque = localStorage.getItem("valeurQuestioncenque")
+
    }
 
 
@@ -197,10 +198,10 @@ onSavequesunChanged(savequesunCheckBox){
     console.log("compte : ", this.compt);
     
     localStorage.setItem('compt',JSON.stringify(this.compt));
-  this.compteur = localStorage.getItem('compt')
+  // this.compteur = localStorage.getItem('compt')
   
-  this.comptService.compteur = this.compteur;
-  localStorage.setItem('comptServiceCompteur',this.compteur);
+  // this.comptService.compteur = this.compteur;
+  // localStorage.setItem('comptServiceCompteur',this.compteur);
   
   console.log(this.quesUn, 'rarar');
   localStorage.setItem("valeurQuestionUn", this.quesUn)
@@ -209,11 +210,19 @@ onSavequesunChanged(savequesunCheckBox){
   localStorage.setItem("valeurQuestionquatre", this.quesQuatre)
   localStorage.setItem("valeurQuestioncenque", this.quesCenque)
 
+
+
+
+  
+
+
   }
 
   /**********************   fin meethode fiche audio  *********************** */
 
 
-
+  clear(){
+    localStorage.removeItem('compt')
+  }
 
 }

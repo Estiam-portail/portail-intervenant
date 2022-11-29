@@ -24,7 +24,8 @@ export class ActiviteidentitiesuiteComponent implements OnInit {
   questreize
   quesquatorze
   // ******************************************
-  constructor(private resultService : ResultatsService,public comptService : CompteurService, private router:Router) { 
+  constructor(private resultService : ResultatsService,
+    public comptService : CompteurService, private router:Router) { 
     this.compteur = localStorage.getItem('compt')
     this.quesdix = localStorage.getItem("valeurQuestiondix")
     this.quesonze = localStorage.getItem("valeurQuestiononze")
@@ -167,10 +168,8 @@ handleChangequesQuatorze(evt){
     localStorage.setItem("questionQuatorze", data.quesquatorze);
 
     
-    localStorage.setItem('compt',JSON.stringify(this.compt));
-    this.compteur = localStorage.getItem('compt')
-    this.comptService.compteur = +(this.comptService.compteur) + +(this.compt)
-
+    let compteur = +localStorage.getItem('compt') + +this.compt;
+    localStorage.setItem('compt',JSON.stringify(compteur));
     this.router.navigate(['/SeDeplacerEnVille']);
 
   localStorage.setItem("valeurQuestiondix", this.quesdix)
@@ -179,6 +178,11 @@ handleChangequesQuatorze(evt){
   localStorage.setItem("valeurQuestiontreize", this.questreize)
   localStorage.setItem("valeurQuestionquatorze", this.quesquatorze)
 
+  }
+
+
+  buck(){
+    this.router.navigate(['/identity']);
   }
 
 }

@@ -54,7 +54,7 @@ this.questrentehuite =  localStorage.getItem("questrentehuite")
 this.questrenteneuf=  localStorage.getItem("questrenteneuf")
 this.quesquarante = localStorage.getItem("quesquarante")
 // *********************************
-
+this.compteur = localStorage.getItem('compt')
   }
 
   resultats: Resultat;
@@ -214,10 +214,8 @@ handleChangequesQuarante(evt){
     localStorage.setItem("questionTrenteneuf", data.questrenteneuf)
     localStorage.setItem("questionQuarante", data.quesquarante)
 
-    localStorage.setItem('compt',JSON.stringify(this.compt));
-    this.compteur = localStorage.getItem('compt')
-    this.comptService.compteur = this.compteur;
-    this.comptService.compteur = +(this.comptService.compteur) + +(this.compt)
+    let compteur = +localStorage.getItem('compt') + +this.compt;
+    localStorage.setItem('compt',JSON.stringify(compteur));
 
   localStorage.setItem("questiontrentecenque", this.questrentecenque)
   localStorage.setItem("questrentesix", this.questrentesix)
@@ -228,5 +226,9 @@ handleChangequesQuarante(evt){
 
 
     this.router.navigate(['/result']);
+  }
+
+  buck(){
+    this.router.navigate(['/mondeDuTravail']);
   }
 }

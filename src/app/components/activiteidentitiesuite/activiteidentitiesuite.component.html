@@ -1,159 +1,251 @@
 <div class="container">
-    <div class="float-end"><button class="btn btn-info border rounded-circle fixed-top mt-5">
+  <div class="float-end">
+    <div class="float-end fixed-top" style="margin-top: 100px;">
+      <!-- <span class="btn btn-info mb-1">Score activité courant : {{ compt }}
+      </span><br> -->
+      <!-- <span class="btn btn-success"> -->
+        <!-- {{comptService.compteur}}/40 -->
+        <!-- Score tout les activités : {{ compteur }} / 40 -->
+      <!-- </span> -->
+      <p lass="btn _bg border rounded-circle"> 9 / 40</p>
+  </div>
+  
+  </div>
+  <h6 class="container text-danger text-center pt-4">
+    Renseigner un formulaire
+  </h6>
+  <form
+    #f="ngForm"
+    (ngSubmit)="activiteidentitiesuite(f)"
+    class="border border-primar rounded p-4 text-muted"
+  >
+    <div class="row lrg">
+      <div class="col-md-6">
+        <p class="bg-light border border-dark rounded p-4">
+          <i class="text-danger mr-4 fas fa-question-circle"></i>Je vais prendre
+          un moment pour regarder comment vous avez rempli le formulaire. <br />
+          Sur ordinateur, vous pouvez vérifier la saisie effectuée en revenant
+          sur le formulaire. <br />
+          Sur papier, il vous faut remplir les informations dans le formulaire
+          en ligne en revenant sur la page précédente: genre, nom, prénom, date
+          et lieu de naissance, code postal, email et téléphone.
+        </p>
+      </div>
 
-        <span >{{compt}}/40 </span>  <span >{{comptService.compteur}}/40 </span>  
-    </button>
-    </div>
-    <h6 class="container text-danger text-center pt-4 "> Renseigner un formulaire</h6>
-    <form #f="ngForm" (ngSubmit)="activiteidentitiesuite(f)" class="border border-primar rounded p-4 text-muted">
-
-    <div class="row">
-        <div class="col-md-6  "><p class="bg-light border border-dark rounded  p-4"><i class=" text-danger mr-4 fas fa-question-circle"></i>Je vais prendre un moment pour regarder comment vous avez rempli le formulaire.
-        <br> Sur ordinateur, vous pouvez vérifier la saisie effectuée en revenant sur le formulaire. <br> Sur papier, il vous faut remplir les informations dans le formulaire en ligne en revenant sur la page précédente: genre, nom, prénom, date et lieu de naissance, code postal, email et téléphone. </p></div>
-
-        <!----------------------------------------------questuion un -------------------------->
-        <div class="col-md-6">
-            <p class="mt-4">10) La personne a rempli le formulaire d’identité sur ordinateur </p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input (change)="handleChangequesDix($event)" class="form-check-input " 
-                    name="quesdix" value="oui" 
-                    [(ngModel)]="quesdix"
-                    type="radio" required >OUI, sans difficulté
-                </label>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesDix($event)" class="form-check-input"
-                         name="quesdix" value="ouienpartie" 
-                         [(ngModel)]="quesdix"
-                         type="radio" required>OUI, avec
-                        difficulté ou avec de l’aide
-                    </label>
-                </div>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesDix($event)" class="form-check-input" 
-                        name="quesdix" value="non" 
-                        [(ngModel)]="quesdix"
-                        type="radio" required>NON
-                    </label>
-                </div>
-            </div>
-            <!----------------------------------------------questuion un -------------------------->
-            <!----------------------------------------------questuion deux -------------------------->
-
-            <p class="mt-4">11) La personne a-t-elle rempli les items du questionnaire d’identité ? </p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input (change)="handleChangequesOnze($event)" class="form-check-input "
-                     name="quesonze" value="oui" 
-                     [(ngModel)]="quesonze"
-                     type="radio" required>OUI, elle a tout
-                    rempli, avec ou sans aide
-                </label>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesOnze($event)" class="form-check-input" 
-                        name="quesonze" value="ouienpartie" 
-                        [(ngModel)]="quesonze"
-                        type="radio" required>OUI,
-                        elle a rempli les 2/3 du questionnaire avec ou sans aide
-                    </label>
-                </div>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesOnze($event)" class="form-check-input" 
-                        name="quesonze" value="non" 
-                        [(ngModel)]="quesonze"
-                        type="radio" required>NON, elle n’a
-                        pas réussi à remplir plus du 1/3 du questionnaire
-                    </label>
-                </div>
-            </div>
-            <!----------------------------------------------questuion deux -------------------------->
-            <!----------------------------------------------questuion troix -------------------------->
-
-            <p class="mt-4">12) A-t-elle rempli les cases correspondant à sa date de naissance ? </p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input (change)="handleChangequesDouze($event)" class="form-check-input "
-                     name="quesdouze" value="oui" 
-                     [(ngModel)]="quesdouze"
-                     type="radio" required>OUI, elle a
-                    réussi à donner sa date de naissance en respectant le code
-                </label>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesDouze($event)" class="form-check-input"
-                         name="quesdouze" value="non" 
-                         [(ngModel)]="quesdouze"
-                         type="radio" required>NON
-                    </label>
-                </div>
-            </div>
-            <!----------------------------------------------questuion troix -------------------------->
-            <!----------------------------------------------questuion quatre -------------------------->
-
-            <p class="mt-4">13) A-t-elle donné le titre de son dernier emploi ?</p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input class="form-check-input " 
-                    (change)="handleChangequesTreise($event)" name="questreize" value="oui" 
-                    [(ngModel)]="questreize"
-                    type="radio" required>OUI, elle a donné
-                    l’intitulé du dernier stage ou emploi occupé ou en cours
-                </label>
-                <div>
-                    <label class="form-check-label  ">
-                        <input  (change)="handleChangequesTreise($event)" class="form-check-input" name="questreize" value="non" 
-                        [(ngModel)]="questreize"
-                        type="radio" required>NON, elle n’a
-                        pas donné l’intitulé du dernier stage ou emploi occupé ou en cours
-                    </label>
-                </div>
-            </div>
-            <!----------------------------------------------questuion quatre -------------------------->
-
-            <!----------------------------------------------questuion cenque -------------------------->
-
-            <p class="mt-4">14) A-t-elle donné la date de son dernier emploi ? </p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input class="form-check-input " 
-                    (change)="handleChangequesQuatorze($event)"
-                     name="quesquatorze" 
-                    value="oui" 
-                    [(ngModel)]="quesquatorze"
-                    type="radio" required>OUI, elle a
-                    donné les dates de son dernier stage ou emploi occupé ou en cours
-                </label>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesQuatorze($event)"  
-                        class="form-check-input"
-                         name="quesquatorze" value="non"
-                          [(ngModel)]="quesquatorze"
-                          type="radio" required>Non, elle
-                        n’a pas réussi à donner la date de son dernier diplôme ou n’a pas de diplôme
-                    </label>
-                </div>
-            </div>
+      <!----------------------------------------------questuion un -------------------------->
+      <div class="col-md-6">
+        <p class="mt-4">
+          10) La personne a rempli le formulaire d’identité sur ordinateur
+        </p>
+        <div class="form-group form-check mb-4 text-muted">
+          <label class="form-check-label mr-4">
+            <input
+              (change)="handleChangequesDix($event)"
+              class="form-check-input"
+              name="quesdix"
+              value="oui"
+              [(ngModel)]="quesdix"
+              type="radio"
+              required
+            />OUI, sans difficulté
+          </label>
+          <div>
+            <label class="form-check-label">
+              <input
+                (change)="handleChangequesDix($event)"
+                class="form-check-input"
+                name="quesdix"
+                value="ouienpartie"
+                [(ngModel)]="quesdix"
+                type="radio"
+                required
+              />OUI, avec difficulté ou avec de l’aide
+            </label>
+          </div>
+          <div>
+            <label class="form-check-label">
+              <input
+                (change)="handleChangequesDix($event)"
+                class="form-check-input"
+                name="quesdix"
+                value="non"
+                [(ngModel)]="quesdix"
+                type="radio"
+                required
+              />NON
+            </label>
+          </div>
         </div>
+        <!----------------------------------------------questuion un -------------------------->
+        <!----------------------------------------------questuion deux -------------------------->
+
+        <p class="mt-4">
+          11) La personne a-t-elle rempli les items du questionnaire d’identité
+          ?
+        </p>
+        <div class="form-group form-check mb-4 text-muted">
+          <label class="form-check-label mr-4">
+            <input
+              (change)="handleChangequesOnze($event)"
+              class="form-check-input"
+              name="quesonze"
+              value="oui"
+              [(ngModel)]="quesonze"
+              type="radio"
+              required
+            />OUI, elle a tout rempli, avec ou sans aide
+          </label>
+          <div>
+            <label class="form-check-label">
+              <input
+                (change)="handleChangequesOnze($event)"
+                class="form-check-input"
+                name="quesonze"
+                value="ouienpartie"
+                [(ngModel)]="quesonze"
+                type="radio"
+                required
+              />OUI, elle a rempli les 2/3 du questionnaire avec ou sans aide
+            </label>
+          </div>
+          <div>
+            <label class="form-check-label">
+              <input
+                (change)="handleChangequesOnze($event)"
+                class="form-check-input"
+                name="quesonze"
+                value="non"
+                [(ngModel)]="quesonze"
+                type="radio"
+                required
+              />NON, elle n’a pas réussi à remplir plus du 1/3 du questionnaire
+            </label>
+          </div>
+        </div>
+        <!----------------------------------------------questuion deux -------------------------->
+        <!----------------------------------------------questuion troix -------------------------->
+
+        <p class="mt-4">
+          12) A-t-elle rempli les cases correspondant à sa date de naissance ?
+        </p>
+        <div class="form-group form-check mb-4 text-muted">
+          <label class="form-check-label mr-4">
+            <input
+              (change)="handleChangequesDouze($event)"
+              class="form-check-input"
+              name="quesdouze"
+              value="oui"
+              [(ngModel)]="quesdouze"
+              type="radio"
+              required
+            />OUI, elle a réussi à donner sa date de naissance en respectant le
+            code
+          </label>
+          <div>
+            <label class="form-check-label">
+              <input
+                (change)="handleChangequesDouze($event)"
+                class="form-check-input"
+                name="quesdouze"
+                value="non"
+                [(ngModel)]="quesdouze"
+                type="radio"
+                required
+              />NON
+            </label>
+          </div>
+        </div>
+        <!----------------------------------------------questuion troix -------------------------->
+        <!----------------------------------------------questuion quatre -------------------------->
+
+        <p class="mt-4">13) A-t-elle donné le titre de son dernier emploi ?</p>
+        <div class="form-group form-check mb-4 text-muted">
+          <label class="form-check-label mr-4">
+            <input
+              class="form-check-input"
+              (change)="handleChangequesTreise($event)"
+              name="questreize"
+              value="oui"
+              [(ngModel)]="questreize"
+              type="radio"
+              required
+            />OUI, elle a donné l’intitulé du dernier stage ou emploi occupé ou
+            en cours
+          </label>
+          <div>
+            <label class="form-check-label">
+              <input
+                (change)="handleChangequesTreise($event)"
+                class="form-check-input"
+                name="questreize"
+                value="non"
+                [(ngModel)]="questreize"
+                type="radio"
+                required
+              />NON, elle n’a pas donné l’intitulé du dernier stage ou emploi
+              occupé ou en cours
+            </label>
+          </div>
+        </div>
+        <!----------------------------------------------questuion quatre -------------------------->
+
         <!----------------------------------------------questuion cenque -------------------------->
+
+        <p class="mt-4">14) A-t-elle donné la date de son dernier emploi ?</p>
+        <div class="form-group form-check mb-4 text-muted">
+          <label class="form-check-label mr-4">
+            <input
+              class="form-check-input"
+              (change)="handleChangequesQuatorze($event)"
+              name="quesquatorze"
+              value="oui"
+              [(ngModel)]="quesquatorze"
+              type="radio"
+              required
+            />OUI, elle a donné les dates de son dernier stage ou emploi occupé
+            ou en cours
+          </label>
+          <div>
+            <label class="form-check-label">
+              <input
+                (change)="handleChangequesQuatorze($event)"
+                class="form-check-input"
+                name="quesquatorze"
+                value="non"
+                [(ngModel)]="quesquatorze"
+                type="radio"
+                required
+              />Non, elle n’a pas réussi à donner la date de son dernier diplôme
+              ou n’a pas de diplôme
+            </label>
+          </div>
+        </div>
+      </div>
+      <!----------------------------------------------questuion cenque -------------------------->
     </div>
 
-
-
-
-    <!-- <div class="row mt-4">
+    <!-- <div class="row lrg mt-4">
        <div class="col-4"><button type="submit" class="btn btnbg float-right" ><i
                     class="fas fa-forward pl-4 pr-4"></i></button></div>
     </div> -->
-        
-    <button type="submit required" class=" btn btnbg float-right mr-4 mb-4" [disabled]="!f.form.valid"><span class="text-danger" *ngIf="!f.form.valid">Suite : répondre à toutes les questions</span><i
-        class="fas fa-forward pl-4 pr-4"></i></button>
-    
 
-
-</form>
+ <div class="row lrg">
+<div class="col-6">
+<button class="btn btnbg float-left  mb-4" (click)="buck()">
+  <i class="fas fa-backward pl-4 pr-4"></i>
+</button>
+</div>
+<div class="col-6">
+  <button
+  type="submit required"
+  class="btn btnbg float-right mr-4 mb-4"
+  [disabled]="!f.form.valid"
+>
+  <span class="text-danger" *ngIf="!f.form.valid"
+    >Suite : répondre à toutes les questions</span
+  ><i class="fas fa-forward pl-4 pr-4"></i>
+</button>
+</div>
+ </div>
+  </form>
 </div>

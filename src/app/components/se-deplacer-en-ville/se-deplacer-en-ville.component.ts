@@ -45,7 +45,7 @@ this.quesvingtsix = localStorage.getItem("questionvingtsix");
 this.quesvingtcept = localStorage.getItem("questionvingtcept");
 this.quesvingthuit = localStorage.getItem("questionvingthuit");
 this.quesvingtneuf = localStorage.getItem("questionvingtneuf");
-
+this.compteur = localStorage.getItem('compt')
 
 // ***********************************
 
@@ -409,10 +409,8 @@ handleChangequesVingthuit(evt){
     localStorage.setItem("questionVingtcept", data.quesvingtcept)
     localStorage.setItem("questionVingthuit", data.quesvingthuit)
 
-    localStorage.setItem("compt",JSON.stringify(this.compt));
-    this.compteur = localStorage.getItem('compt')
-    this.comptService.compteur = +(this.comptService.compteur) + +(this.compt)
-
+    let compteur = +localStorage.getItem('compt') + +this.compt;
+    localStorage.setItem('compt',JSON.stringify(compteur));
 
     // ***************************************
     localStorage.setItem("questionquinze", this.quesquinze);
@@ -435,6 +433,12 @@ handleChangequesVingthuit(evt){
 
 
     this.router.navigate(['/mondeDuTravail']);
+  }
+
+
+
+  buck(){
+    this.router.navigate(['/activiteidentitesuite']);
   }
 
 }

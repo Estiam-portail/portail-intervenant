@@ -1,6 +1,19 @@
-<div class="container">
+<div class="container ">
 
-  <div class=" p-4 border border rounded">
+  <div class="row mt-2">
+    <div class="col-6">
+      <!-- <button class="btn btn-info float-left  mb-4" (click)="buck()">
+        <i class="fas fa-backward pl-4 pr-4"></i>
+
+      </button> -->
+      <p class="btn">40 / 40</p>
+    </div>
+    <!-- <div class="col-6">
+      <p class="btn btn-success">Score tout les activités : 40 / 40</p> -->
+    <!-- </div> -->
+  </div>
+
+  <div class=" p-4 border border rounded tata">
     <p class="text-center "><strong> {{genre}} :</strong> {{prenom}} {{nom}}</p>
     <!-- <p>UID : {{uid}}</p> -->
     <div class="row mt-4">
@@ -8,12 +21,14 @@
         <strong> Date de l'évaluation </strong> :{{ resultService.date | date:'d/M/yyyy'}}
       </div>
       <div class="col-md-4">
-        <strong> Date de naissance et lieu de naissance  </strong>  : {{resultService.dateNaissance | date:'d/M/yyyy'}} / {{resultService.lieuNaissance}} 
+        <strong> Date de naissance et lieu de naissance </strong> : {{resultService.dateNaissance | date:'d/M/yyyy'}} /
+        {{resultService.lieuNaissance}}
       </div>
+
     </div>
 
     <div class="container mt-4">
-      <table class="table">
+      <table class="tata table">
         <thead>
           <tr>
             <th scope="col"></th>
@@ -45,11 +60,11 @@
         </tbody>
       </table>
 
-      <button class="btn btn-danger" (click)="enregestrerlesresultat()" *ngIf="enregestrerlesresultats"> SAUVEGARDER LES RESULTATS </button>
+      <button class="btn btn-danger" (click)="enregestrerlesresultat()" *ngIf="enregestrerlesresultats"> SAUVEGARDER LES
+        RESULTATS </button>
     </div>
 
-
-    <div class="container" style="width: 600px; height: 300px;">
+    <div class="container tata" style="width: 600px; height: 300px; ">
 
       <canvas id="myChart" width="600" height="200"></canvas>
     </div>

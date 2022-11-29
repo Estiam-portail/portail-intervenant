@@ -25,6 +25,26 @@ export class TestComponent implements OnInit {
 
   diag
   ngOnInit(): void {
+    this.getAll()
+  }
+
+
+    //**********************      delete element *******************************/
+    delete(id: string) {
+      this.resultService.delete(id);
+    }
+
+
+  getUserData(uid){
+    this.fs.collection('users')
+      .doc(uid).valueChanges().subscribe(val =>{ 
+        this.object= val
+        console.log(this.object.firstName);
+      });
+  }
+
+
+  getAll(){
     this.fs.collection('resultat').snapshotChanges().subscribe(data => {
       this.diag = data.map(e => {
         return {
@@ -49,22 +69,5 @@ export class TestComponent implements OnInit {
       })
     });
   }
-
-
-    //**********************      delete element *******************************/
-    delete(id: string) {
-      this.resultService.delete(id);
-    }
-
-
-  getUserData(uid){
-    this.fs.collection('users')
-      .doc(uid).valueChanges().subscribe(val =>{ 
-        this.object= val
-        console.log(this.object.firstName);
-      });
-  }
-
-
 
 }

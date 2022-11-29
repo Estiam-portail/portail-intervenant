@@ -15,7 +15,6 @@ export class ActiviteidentitieComponent implements OnInit {
   rensform1: boolean = false;
   rensform2: boolean = false;
   questionhuit:boolean = false;
-
   // **************************************
   compteurquestionSix;
   compteurquestionSept
@@ -29,11 +28,13 @@ export class ActiviteidentitieComponent implements OnInit {
   // ****************************************
   constructor(private resultService: ResultatsService,
     public comptService : CompteurService, private router: Router) {
-    this.compteur = localStorage.getItem('compt')
     this.quesix = localStorage.getItem("valeurQuestionsix")
     this.quessept = localStorage.getItem("valeurQuestionsept")
     this.queshuit = localStorage.getItem("valeurQuestionhuit")
     this.quesneuf = localStorage.getItem("valeurQuestionneuf")
+
+
+    this.compteur = localStorage.getItem('compt')
    }
  
   ngOnInit(): void {
@@ -170,10 +171,10 @@ handleChangequesSix(evt) {
 
 
     
-    localStorage.setItem('compt',JSON.stringify(this.compt));
-    
-    this.compteur = localStorage.getItem('compt')
-    this.comptService.compteur = +(this.comptService.compteur) + +(this.compt)
+    let compteur = +localStorage.getItem('compt') + +this.compt;
+    localStorage.setItem('compt',JSON.stringify(compteur));
+    // this.compteur = localStorage.getItem('compt')
+    // this.comptService.compteur = +(this.comptService.compteur) + +(this.compt)
 
     this.router.navigate(['/identity']);
 
@@ -182,7 +183,16 @@ handleChangequesSix(evt) {
   localStorage.setItem("valeurQuestionhuit", this.queshuit)
   localStorage.setItem("valeurQuestionneuf", this.quesneuf)
 
+
+
+  
+
+
   }
 
+
+  buck(){
+    this.router.navigate(['/fichierAudio']);
+  }
 
 }

@@ -2,9 +2,18 @@
   <h4 class="text-center  mt-4 font-weight-bold">
     COMPRENDRE L’OBJECTIF DE DIEGO !
   </h4>
-  <div class="float-end"><button class="btn btn-info border rounded-circle fixed-top mt-5">
-    <span >{{compt}}/40 </span>  <span >{{comptService.compteur}}/40 </span> </button>
+  <div class="float-end fixed-top" style="margin-top: 100px;">
+      <!-- <span class="btn btn-info mb-1">Score activité courant : {{ compt }}
+      </span><br> -->
+      <!-- <span class="btn btn-success"> -->
+        <!-- {{comptService.compteur}}/40 -->
+        <!-- Score tout les activités : {{ compteur }} / 40 -->
+      <!-- </span> -->
+      <p class="btn _bg border rounded-circle">  0 / 40</p>
   </div>
+  
+
+  <!-- <strong class="btn btn-warning" (click)="clear()">{{compteur}}</strong> -->
   
   <h5 class="container text-center border-top pt-4 border-danger"> ACTIVITE 1 : Comprendre un message vocal et le
     reformuler avec ses
@@ -12,7 +21,7 @@
   <figure>
     <audio class="mt-4 mb-4" style="width: 100%; border: 1px solid #ea553c;" controls
       src="./assets/ppartie.aac">
-      Your browser does not support the
+      Your brow lrgser does not support the
       <code>audio</code> element.
     </audio>
   </figure>
@@ -29,7 +38,7 @@
 
   <!---------------------------    question un ---------------->
   <form #f="ngForm" (ngSubmit)="ficheAudio(f)" class="border border-primar rounded p-4 text-muted">
-  <div class="row m-4">
+  <div class="row lrg m-4">
     <div class="col-md-6 bg-light border border-dark rounded p-4">
       <p> <i class=" text-danger mr-4 fas fa-question-circle"></i> Pour bien comprendre DIEGO, nous allons écouter un
         enregistrement. Je vais vous faire écouter le message en entier. Écoutez attentivement ce message et essayez
@@ -79,7 +88,7 @@
 
   <!---------------       question  deux ------------------->
 
-  <div class="row m-4">
+  <div class="row lrg m-4">
     <div class="col-md-6 bg-light border border-dark rounded p-4">
       <p> <i class=" text-danger mr-4 fas fa-question-circle"></i> Pouvez-vous me dire ce que vous avez compris ?
       </p>
@@ -129,14 +138,14 @@
   <figure>
     <audio class="mt-4 mb-4" style="width: 100%; border: 1px solid #ea553c;" controls
       src="./assets/dpartie.aac">
-      Your browser does not support the
+      Your brow lrgser does not support the
       <code>audio</code> element.
     </audio>
   </figure>
 
   <!---------------------------    question trois ---------------->
 
-  <div class="row m-4">
+  <div class="row lrg m-4">
     <div class="col-md-6 bg-light border border-dark rounded p-4">
       <p><i class=" text-danger fas fa-question-circle"></i> Nous allons maintenant écouter un deuxième message.
         Et vous allez répondre à ces trois questions :<br>Combien de temps dure le test ? <br>
@@ -186,7 +195,7 @@
   <h6 class="text-center text-danger"> Ecouter et répondre à des questions</h6>
   <!---------------       question  quatre ------------------->
 
-  <div class="row m-4">
+  <div class="row lrg m-4">
     <div class="col-md-6 bg-light border border-dark rounded p-4">
       <p> <i class=" text-danger mr-4 fas fa-question-circle"></i> Pouvez-vous répondre à ces trois questions:<br>
         Combien
@@ -234,7 +243,7 @@
 
   <!----------------------------------       question  cenque  ------------------------------------>
   <h6 class="text-center text-danger">Donner une réponse personnelle et la justifier </h6>
-  <div class="row m-4">
+  <div class="row lrg m-4">
     <div class="col-md-6 bg-light border border-dark rounded p-4">
       <p> <i class=" text-danger mr-4 fas fa-question-circle"></i> Pouvez-vous me dire, à votre avis, ce que vous
         savez déjà faire et ce qu’il vous reste à apprendre?
@@ -281,15 +290,16 @@
 
 
 
-  <!-----------------------------   fin des divs row --------------------------->
+  <!-----------------------------   fin des divs row lrg --------------------------->
 
 
 
     <button type="submit required" 
     class=" btn btnbg float-right mr-4 mb-4" >
-    <!-- <span class="text-danger" *ngIf="!f.form.valid">
-      Suite : répondre à toutes les questions</span> -->
+    <span class="text-info" *ngIf="!f.form.valid">
+      Suite : répondre à toutes les questions</span>
       <i
-      class="fas fa-forward pl-4 pr-4"></i></button>
+      class="fas fa-forward pl-4 pr-4"></i>
+    </button>
 
 </form>

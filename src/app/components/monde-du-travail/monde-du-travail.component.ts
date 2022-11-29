@@ -27,7 +27,6 @@ export class MondeDuTravailComponent implements OnInit {
   // *****************************
   constructor(private resultService : ResultatsService
     ,public comptService : CompteurService, private router:Router) {
-    this.compteur = localStorage.getItem('compt')
         // ********************************/
         this.quesvingtneuf = localStorage.getItem("valeurQuesvingtneuf")
         this.questrente = localStorage.getItem("valeurQuestiontrente")
@@ -36,7 +35,7 @@ export class MondeDuTravailComponent implements OnInit {
         this.questrentetroix = localStorage.getItem("valeurQuestiontrentetroix")
         this.questrentequatre = localStorage.getItem("valeurQuestiontrentequatre")
         // ********************************
-    
+        this.compteur = localStorage.getItem('compt')
    }
 // *********************************************
 handleChangequesVingtneuf(evt){
@@ -181,11 +180,10 @@ handleChangequesTrentequatre(evt){
     localStorage.setItem("questionTrentedeux", data.questrentedeux);
     localStorage.setItem("questionTrentetroix", data.questrentetroix);
     localStorage.setItem("questionTrentequatre", data.questrentequatre);
+  
     
-    localStorage.setItem('compt',JSON.stringify(this.compt));
-    this.compteur = localStorage.getItem('compt')
-    this.comptService.compteur = +(this.comptService.compteur) + +(this.compt)
-
+    let compteur = +localStorage.getItem('compt') + +this.compt;
+    localStorage.setItem('compt',JSON.stringify(compteur));
     // ********************************/
     localStorage.setItem("valeurQuesvingtneuf", this.quesvingtneuf)
     localStorage.setItem("valeurQuestiontrente", this.questrente)
@@ -200,5 +198,9 @@ handleChangequesTrentequatre(evt){
     this.router.navigate(['/offreDemploi']);
   }
   
+
+  buck(){
+    this.router.navigate(['/SeDeplacerEnVille']);
+  }
 
 }

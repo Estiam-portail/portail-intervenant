@@ -1,275 +1,262 @@
-<h4 class="text-center  mt-4 font-weight-bold mb-4 "> S’APPROPRIER LES ECRITS DU MONDE DU TRAVAIL</h4>
+<h4 class="text-center mt-4 font-weight-bold mb-4">
+    S’APPROPRIER LES ECRITS DU MONDE DU TRAVAIL
+</h4>
+       
 
-<div class="container ">
-    <div class="float-end"><button class="btn btn-info border rounded-circle fixed-top mt-5">
-        <span >{{compt}}/40 </span>  <span >{{comptService.compteur}}/40 </span>  
-    </button>
+
+<div class="container">
+    <a  class="btn btn-info ml-5 mr-5 float-end"  target="_blank"
+href="https://www.illettrisme.org/ressources-documentaires/documents-telechargeables/func-startdown/767/">
+Telecharger le bulletin de salaire
+
+</a>
+    <div class="float-end">
+        <div class="float-end fixed-top" style="margin-top: 100px;">
+            <!-- <span class="btn btn-info mb-1">Score activité courant : {{ compt }} -->
+            <!-- </span><br> -->
+            <!-- <span class="btn btn-success"> -->
+                <!-- {{comptService.compteur}}/40 -->
+                <!-- Score tout les activités : {{ compteur }} / 40 -->
+            <!-- </span> -->
+            <p lass="btn _bg border rounded-circle"> 28 / 40</p>
+ 
+        </div>
     </div>
-    <div class="container">
-        <h6 class="text-center mt-4 mb-4 text-danger border-top pt-4 border-danger ">ACTIVITE N°4-1: SE REPERER DANS UN
-            BULLETIN DE PAIE</h6>
 
-        <div class=" container bg-light text-center border rounded p-4 col-md-12">
-            <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
+    <div class="container">
+        <h6 class="text-center mt-4 mb-4 text-danger border-top pt-4 border-danger">
+            ACTIVITE N°4-1: SE REPERER DANS UN BULLETIN DE PAIE
+        </h6>
+
+        <div class="container bg-light text-center border rounded p-4 col-md-12">
+            <p>
+                <i class="text-danger mr-4 fas fa-question-circle"></i>
                 Nous allons maintenant passer à l’activité autour du travail.
             </p>
-            <p class="text-muted"><i class="fab text-secondary mr-4 fa-font-awesome-flag"></i> Sortir le bulletin et
-                le placer face à la personne reçue, lui laisser 20 secondes
-                pour le regarder, puis lui poser la série de questions ci-après:</p>
-
+            <p class="text-muted">
+                <i class="fab text-secondary mr-4 fa-font-awesome-flag"></i> Sortir le
+                bulletin et le placer face à la personne reçue, lui laisser 20 secondes
+                pour le regarder, puis lui poser la série de questions ci-après:
+            </p>
         </div>
     </div>
     <form #f="ngForm" (ngSubmit)="modedutravail(f)" class="border border-primar rounded p-4 text-muted">
-
-    <!----------------------------------       question  deux  ------------------------------------>
-    <div class="row m-4">
-        <div class="col-md-6 bg-light border border-dark rounded p-4">
-            <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
-                Pouvez-vous me dire à quoi sert ce document ?
-            </p>
-        </div>
-        <div class="col md-8">
-            <!-- ***************************************************************************************** -->
-            <p class="mt-4">29) La personne a-t-elle réussi à répondre à la question? </p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input
-                    (change)="handleChangequesVingtneuf($event)"
-                     class="form-check-input" 
-                     [(ngModel)]="quesvingtneuf"
-                     name="quesvingtneuf" value="oui" type="radio" required>OUI
-                </label>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesVingtneuf($event)"
-                         class="form-check-input" 
-                         [(ngModel)]="quesvingtneuf"
-                         name="quesvingtneuf" value="non" type="radio" required>NON
-                    </label>
-                </div>
+        <!----------------------------------       question  deux  ------------------------------------>
+        <div class="row lrg m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p>
+                    <i class="text-danger mr-4 fas fa-question-circle"></i>
+                    Pouvez-vous me dire à quoi sert ce document ?
+                </p>
             </div>
-        </div>
-    </div>
-    <!-----------------------------------   fin question deux ---------------------------------->
-
-
-
-
-
-
-
-    <!----------------------------------       question  trois  ------------------------------------>
-    <div class="row m-4">
-        <div class="col-md-6 bg-light border border-dark rounded p-4">
-            <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
-                Pouvez-vous me dire à qui est adressé ce document?
-            </p>
-        </div>
-        <div class="col md-8">
-            <!-- ***************************************************************************************** -->
-            <p class="mt-4">30) La personne a-t-elle dit à qui est adressé ce document? </p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input
-                    (change)="handleChangequesTrente($event)"
-                     class="form-check-input " 
-                     [(ngModel)]="questrente"
-                     name="questrente" value="oui" type="radio" required>OUI
-                </label>
-                <div>
-                    <label class="form-check-label  ">
-                        <input
-                        (change)="handleChangequesTrente($event)" 
-                        class="form-check-input" 
-                        [(ngModel)]="questrente"
-                        name="questrente" value="non" type="radio" required>NON
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-----------------------------------   fin question troix ---------------------------------->
-
-
-
-
-
-    <!----------------------------------       question  quatre  ------------------------------------>
-    <div class="row m-4">
-        <div class="col-md-6 bg-light border border-dark rounded p-4">
-            <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
-                Regardez attentivement ce bulletin de paie. Quel travail fait ce salarié dans la vie?
-            </p>
-        </div>
-        <div class="col md-8">
-            <!-- ***************************************************************************************** -->
-            <p class="mt-4">31) La personne a-t-elle réussi à répondre à la question? </p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input (change)="handleChangequesTrenteun($event)"
-                     class="form-check-input " 
-                     [(ngModel)]="questrenteun"
-                     name="questrenteun" value="oui" type="radio" required>OUI
-                </label>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesTrenteun($event)" 
-                        class="form-check-input" 
-                        [(ngModel)]="questrenteun"
-                        name="questrenteun" value="non" type="radio" required>NON
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-----------------------------------   fin question quatre ---------------------------------->
-
-
-
-
-
-    <!----------------------------------       question  cenque  ------------------------------------>
-    <div class="row m-4">
-        <div class="col-md-6 bg-light border border-dark rounded p-4">
-            <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
-                En quoi consiste le travail de caissier ?
-            </p>
-        </div>
-        <div class="col md-8">
-            <!-- ***************************************************************************************** -->
-            <p class="mt-4">32) La personne a-t-elle réussi à répondre à la question? </p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input (change)="handleChangequesTrentedeux($event)"
-                     class="form-check-input "  
-                     [(ngModel)]="questrentedeux"
-                     name="questrentedeux" value="oui" type="radio" required>OUI, son explication
-                    est très claire
-                </label>
-                <div>
+            <div class="col md-8">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">
+                    29) La personne a-t-elle réussi à répondre à la question?
+                </p>
+                <div class="form-group form-check mb-4 text-muted">
                     <label class="form-check-label mr-4">
-                        <input (change)="handleChangequesTrentedeux($event)" class="form-check-input " 
-                        [(ngModel)]="questrentedeux"
-                        name="questrentedeux" value="ouienpartie" type="radio" required>OUI EN
-                        PARTIE, avec de l'aide
+                        <input (change)="handleChangequesVingtneuf($event)" class="form-check-input"
+                            [(ngModel)]="quesvingtneuf" name="quesvingtneuf" value="oui" type="radio" required />OUI
                     </label>
-                </div>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesTrentedeux($event)" class="form-check-input" 
-                        [(ngModel)]="questrentedeux"
-                        name="questrentedeux" value="non" type="radio" required>NON
-                    </label>
+                    <div>
+                        <label class="form-check-label">
+                            <input (change)="handleChangequesVingtneuf($event)" class="form-check-input"
+                                [(ngModel)]="quesvingtneuf" name="quesvingtneuf" value="non" type="radio" required />NON
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-----------------------------------   fin question cenque ---------------------------------->
+        <!-----------------------------------   fin question deux ---------------------------------->
 
-
-
-
-
-
-    <!----------------------------------       question  six  ------------------------------------>
-    <div class="row m-4">
-        <div class="col-md-6 bg-light border border-dark rounded p-4">
-            <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
-                Regardez encore une fois cette fiche de paie: est-ce que le salarié a fait des heures supplémentaires ce
-                mois-ci et si oui, combien ?
-            </p>
-        </div>
-        <div class="col md-8">
-            <!-- ***************************************************************************************** -->
-            <p class="mt-4">33) La personne a-t-elle réussi à répondre? </p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input (change)="handleChangequesTrentetroix($event)"
-                    [(ngModel)]="questrentetroix"
-                    class="form-check-input "  name="questrentetroix" value="oui" type="radio" required>OUI, elle a su
-                    répondre et a converti en
-                    heures et en minutes
-                </label>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesTrentetroix($event)" class="form-check-input" ngModel name="questrentetroix" value="ouienpartie" type="radio" required>OUI,
-                        avec de l’aide ou n’a pas su
-                        convertir en heures et en minutes
+        <!----------------------------------       question  trois  ------------------------------------>
+        <div class="row lrg m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p>
+                    <i class="text-danger mr-4 fas fa-question-circle"></i>
+                    Pouvez-vous me dire à qui est adressé ce document?
+                </p>
+            </div>
+            <div class="col md-8">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">
+                    30) La personne a-t-elle dit à qui est adressé ce document?
+                </p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesTrente($event)" class="form-check-input"
+                            [(ngModel)]="questrente" name="questrente" value="oui" type="radio" required />OUI
                     </label>
-                </div>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesTrentetroix($event)"
-                         class="form-check-input" 
-                         [(ngModel)]="questrentetroix"
-                         name="questrentetroix" value="non" type="radio" required>NON, elle n’a
-                        pas su répondre
-                    </label>
+                    <div>
+                        <label class="form-check-label">
+                            <input (change)="handleChangequesTrente($event)" class="form-check-input"
+                                [(ngModel)]="questrente" name="questrente" value="non" type="radio" required />NON
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-----------------------------------   fin question six ---------------------------------->
+        <!-----------------------------------   fin question troix ---------------------------------->
 
-
-
-    <!----------------------------------       question  cepte  ------------------------------------>
-    <div class="row m-4">
-        <div class="col-md-6 bg-light border border-dark rounded p-4">
-            <p> <i class=" text-danger mr-4 fas fa-question-circle"></i>
-                Regardez à nouveau le bulletin de salaire<br>Pouvez-vous calculer combien d’heures le caissier a
-                travaillé
-                ce mois-ci?<br>Vous pouvez bien sûr vous servir d’une calculette.
-            </p>
-        </div>
-        <div class="col md-8">
-            <!-- ***************************************************************************************** -->
-            <p class="mt-4">34) La personne a-t-elle réussi à répondre? </p>
-            <div class="form-group form-check mb-4 text-muted">
-                <label class="form-check-label mr-4">
-                    <input (change)="handleChangequesTrentequatre($event)" 
-                    class="form-check-input " 
-                    [(ngModel)]="questrentequatre"
-                    name="questrentequatre" value="oui" type="radio" required>OUI, elle a su
-                    répondre et elle a fait le
-                    calcul
-                </label>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesTrentequatre($event)" 
-                         class="form-check-input" 
-                         [(ngModel)]="questrentequatre"
-                         name="questrentequatre" value="ouienpartie" type="radio" required>OUI EN
-                        PARTIE, elle a trouvé la date mais elle a fait une erreur de calcul
+        <!----------------------------------       question  quatre  ------------------------------------>
+        <div class="row lrg m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p>
+                    <i class="text-danger mr-4 fas fa-question-circle"></i>
+                    Regardez attentivement ce bulletin de paie. Quel travail fait ce
+                    salarié dans la vie?
+                </p>
+            </div>
+            <div class="col md-8">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">
+                    31) La personne a-t-elle réussi à répondre à la question?
+                </p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesTrenteun($event)" class="form-check-input"
+                            [(ngModel)]="questrenteun" name="questrenteun" value="oui" type="radio" required />OUI
                     </label>
-                </div>
-                <div>
-                    <label class="form-check-label  ">
-                        <input (change)="handleChangequesTrentequatre($event)" 
-                         class="form-check-input" 
-                         [(ngModel)]="questrentequatre"
-                         name="questrentequatre" value="non" type="radio" required>NON, elle n’a
-                        pas su répondre
-                    </label>
+                    <div>
+                        <label class="form-check-label">
+                            <input (change)="handleChangequesTrenteun($event)" class="form-check-input"
+                                [(ngModel)]="questrenteun" name="questrenteun" value="non" type="radio" required />NON
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-----------------------------------   fin question cepte ---------------------------------->
+        <!-----------------------------------   fin question quatre ---------------------------------->
 
+        <!----------------------------------       question  cenque  ------------------------------------>
+        <div class="row lrg m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p>
+                    <i class="text-danger mr-4 fas fa-question-circle"></i>
+                    En quoi consiste le travail de caissier ?
+                </p>
+            </div>
+            <div class="col md-8">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">
+                    32) La personne a-t-elle réussi à répondre à la question?
+                </p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesTrentedeux($event)" class="form-check-input"
+                            [(ngModel)]="questrentedeux" name="questrentedeux" value="oui" type="radio" required />OUI,
+                        son explication est très claire
+                    </label>
+                    <div>
+                        <label class="form-check-label mr-4">
+                            <input (change)="handleChangequesTrentedeux($event)" class="form-check-input"
+                                [(ngModel)]="questrentedeux" name="questrentedeux" value="ouienpartie" type="radio"
+                                required />OUI EN PARTIE, avec de l'aide
+                        </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label">
+                            <input (change)="handleChangequesTrentedeux($event)" class="form-check-input"
+                                [(ngModel)]="questrentedeux" name="questrentedeux" value="non" type="radio"
+                                required />NON
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question cenque ---------------------------------->
 
+        <!----------------------------------       question  six  ------------------------------------>
+        <div class="row lrg m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p>
+                    <i class="text-danger mr-4 fas fa-question-circle"></i>
+                    Regardez encore une fois cette fiche de paie: est-ce que le salarié a
+                    fait des heures supplémentaires ce mois-ci et si oui, combien ?
+                </p>
+            </div>
+            <div class="col md-8">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">33) La personne a-t-elle réussi à répondre?</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesTrentetroix($event)" [(ngModel)]="questrentetroix"
+                            class="form-check-input" name="questrentetroix" value="oui" type="radio" required />OUI,
+                        elle a su répondre et a converti en heures et en minutes
+                    </label>
+                    <div>
+                        <label class="form-check-label">
+                            <input (change)="handleChangequesTrentetroix($event)" class="form-check-input" ngModel
+                                name="questrentetroix" value="ouienpartie" type="radio" required />OUI, avec de l’aide
+                            ou n’a pas su convertir en heures et en
+                            minutes
+                        </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label">
+                            <input (change)="handleChangequesTrentetroix($event)" class="form-check-input"
+                                [(ngModel)]="questrentetroix" name="questrentetroix" value="non" type="radio"
+                                required />NON, elle n’a pas su répondre
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question six ---------------------------------->
 
-    <!-- <div class="row">
-        <div class="col-8"><button class="btn btnbg" routerLink="/SeDeplacerEnVille"><i class="fas fa-backward pl-4 pr-4"></i></button></div>
-        <div class="col-4"><button type="submit" class="btn btnbg float-right" ><i
-                    class="fas fa-forward pl-4 pr-4"></i></button></div>
-    </div> -->
+        <!----------------------------------       question  cepte  ------------------------------------>
+        <div class="row lrg m-4">
+            <div class="col-md-6 bg-light border border-dark rounded p-4">
+                <p>
+                    <i class="text-danger mr-4 fas fa-question-circle"></i> Regardez à
+                    nouveau le bulletin de salaire<br />Pouvez-vous calculer combien
+                    d’heures le caissier a travaillé ce mois-ci?<br />Vous pouvez bien sûr
+                    vous servir d’une calculette.
+                </p>
+            </div>
+            <div class="col md-8">
+                <!-- ***************************************************************************************** -->
+                <p class="mt-4">34) La personne a-t-elle réussi à répondre?</p>
+                <div class="form-group form-check mb-4 text-muted">
+                    <label class="form-check-label mr-4">
+                        <input (change)="handleChangequesTrentequatre($event)" class="form-check-input"
+                            [(ngModel)]="questrentequatre" name="questrentequatre" value="oui" type="radio"
+                            required />OUI, elle a su répondre et elle a fait le calcul
+                    </label>
+                    <div>
+                        <label class="form-check-label">
+                            <input (change)="handleChangequesTrentequatre($event)" class="form-check-input"
+                                [(ngModel)]="questrentequatre" name="questrentequatre" value="ouienpartie" type="radio"
+                                required />OUI EN PARTIE, elle a trouvé la date mais elle a fait une erreur
+                            de calcul
+                        </label>
+                    </div>
+                    <div>
+                        <label class="form-check-label">
+                            <input (change)="handleChangequesTrentequatre($event)" class="form-check-input"
+                                [(ngModel)]="questrentequatre" name="questrentequatre" value="non" type="radio"
+                                required />NON, elle n’a pas su répondre
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------------------------------   fin question cepte ---------------------------------->
 
-    <button type="submit required" class="btn btnbg float-right mr-4 mb-4" 
-    [disabled]="!f.form.valid"><span class="text-danger" *ngIf="!f.form.valid">
-       Suite : répondre à toutes les questions</span><i
-        class="fas fa-forward pl-4 pr-4"></i></button>
+        <div class="row lrg">
+            <div class="col-6"><button class="btn btnbg float-left  mb-4" (click)="buck()">
+                    <i class="fas fa-backward pl-4 pr-4"></i>
+                </button></div>
+            <div class="col-6">
+                <button type="submit required" class="btn btnbg float-right mr-4 mb-4" [disabled]="!f.form.valid">
+                    <span class="text-danger" *ngIf="!f.form.valid">
+                        Suite : répondre à toutes les questions</span><i class="fas fa-forward pl-4 pr-4"></i>
+                </button>
+
+            </div>
+        </div>
+
 
     </form>
-
 </div>
