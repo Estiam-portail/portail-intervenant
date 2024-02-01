@@ -1,0 +1,217 @@
+<div class="container mt-4">
+  <!-- *********************************************************
+    ********************************************************* -->
+
+
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#test">
+    Pustuler a cette offres !
+  </button>
+  <!-- ********************************************** -->
+
+
+  <div class="alert alert-success" *ngIf="success">
+    vous modification sont bien prise en compte !
+  </div>
+  <div class="alert alert-danger" *ngIf="error">
+    vous modification ne sont pas prise en compte !
+  </div>
+  <div class="alert alert-danger" *ngIf="successDelete">
+    la supprition est bien prise en compte !
+  </div>
+  <!-- ************************************* -->
+  <div class="card mt-4 mb-4">
+    <h5 class="card-header">{{res.title}} </h5>
+    <div class="card-body">
+      <h5 class="card-title"><strong>Durée </strong> : {{res.duree}}</h5>
+      <p class="card-text mt-4">
+        <strong>Dates </strong> : {{res.datesModel}}
+      </p>
+      <p class="card-text mt-4 mb-4 pt-4">
+        <strong>Programme : </strong> {{res.programme}}
+      </p>
+      <section class="card-text mt-4 mb-4 pt-4">
+        <strong class="mt-4">Objectif de cours : </strong>
+        {{res.description}}
+      </section>
+    </div>
+    <div class="container">
+      <div class="row" >
+        <div class="col-6">
+          <button class="btn btn-secondary mb-md-4" *ngIf='adminUid=="HxFgB53RJWV3107SY0to5Grx7Df2"' (click)="edit(res)" type="button" data-toggle="modal"
+            data-target="#exampleModal">
+            <i class="fa-regular fa-pen-to-square text-warning"></i>
+          </button>
+        </div>
+        <div class="col-6">
+          <button class="btn btn-secondary mb-md-4" *ngIf='adminUid=="HxFgB53RJWV3107SY0to5Grx7Df2"' (click)="delet(res.id)">
+            <i class="fa-solid fa-trash text-danger"></i></button>
+        </div>
+        <!-- ***************** modal **************************
+    *********************************************** -->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><strong>Modifier l'annonce </strong>: {{res.title}} </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- *********   form ************ -->
+                <form>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="updateNewData.title" name="title">
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="updateNewData.duree" name="duree">
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="updateNewData.datesModel" name="datesModel">
+                  </div>
+                  <div class="mb-3">
+                    <textarea type="text" class="form-control" [(ngModel)]="updateNewData.programme"
+                      name="programme"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <textarea type="text" class="form-control" [(ngModel)]="updateNewData.description"
+                      name="description"></textarea>
+                  </div>
+                </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="updateDta()">Valider les
+                    informations</button>
+
+                </div>
+                <!-- ************  fin forme ************ -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- *****************************************
+                ************  fin modal  **************************** -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- *********************************************************
+    ********************************************************* -->
+  <div class="alert alert-secondary mt-4 mb-4" *ngIf='adminUid=="HxFgB53RJWV3107SY0to5Grx7Df2"'>
+    <p *ngIf="resp.length > 0">les formateur interissés pour ce cours sont {{resp.length }} !</p>
+    <p *ngIf="resp.length == 0">personnes a pustulées !</p>
+  </div>
+  <div class="row" *ngIf='adminUid=="HxFgB53RJWV3107SY0to5Grx7Df2"'>
+    <div class="col-md-4 col-sm-12 " *ngFor="let r of resp">
+      <h5 class="card-title">{{r.nom}} {{r.prenom}}</h5>
+      <p class="card-text"> <strong> Biographie : </strong>{{r.description}}</p>
+      <a [href]="r.cv" target="_blank" class="btn btn-secondary">Voir le CV</a>
+    </div>
+    <!-- ********************************************************** -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
+
+
+
+
+<div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{res.title}}</h1>
+
+      </div>
+      <div class="modal-body">
+        <form *ngIf="!ValiderLeCv" [formGroup]="snapForm" (submit)="onSubmitForm(res.title)" class="form-group text-secondary">
+          <div class="form-group">
+            <label>Votre nom</label>
+            <input class="form-control" id="title" type="text" formControlName="nom">
+          </div>
+          <div class="form-group">
+            <label>Votre prenom</label>
+            <input class="form-control" type="text" formControlName="prenom">
+
+          </div>
+          <div class="form-group">
+            <label>Votre Biographie : </label>
+            <textarea class="form-control" type="text" formControlName="description"></textarea>
+          </div>
+
+          <div class="modal-body">
+
+            <label> Votre CV : </label>
+            <input type="file" class="text-nowrap text-truncate" (change)="selectFileCV($event)" />
+
+
+            <button class="btn btn-secondary btn-sm" (click)="uploadCV(); validCv()" >
+              valider mon CV
+            </button>
+          </div>
+        </form>
+        <div class="alert alert-success" *ngIf="ValiderLeCv">
+          Dernière étape pour valider votre candidature.
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler  </button>
+          <button *ngIf="ValiderLeCv" type="button" 
+          class="btn btn-secondary" (click)="onSubmitForm(res.id)" data-dismiss="modal">Envoyer
+           </button>
+          <!-- <button type="button" class="btn btn-primary"  (click)="onSubmitForm(res.id)">Save changes</button> -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->

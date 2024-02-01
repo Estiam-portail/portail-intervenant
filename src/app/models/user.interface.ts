@@ -1,9 +1,7 @@
 export interface User{
     uid?: string,
-    firstName?: string,
-    lastName?: string,
+    nom?: string,
+    prenom?: string,
     email?: string,
     password?: string
-    structure?: string,
-    departement?: string,
 }

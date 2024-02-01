@@ -1,19 +1,39 @@
-<div class="container mt-4 mb-4" *ngIf="!loginUser">
-  <h1 class="text-center text">Connecter à mon espace</h1>
+<div class="container mt-md-5 text-secondary">
+    <h3 class="text-center text-secondary">Connecter à votre espace !</h3>
+    
+    <form class="m-auto  mt-md-5" #f="ngForm" (ngSubmit)="onLogin(f.value)">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Votre adresse email : </label>
+            <input type="email" class="form-control" 
+            name="email" ngModel
+            placeholder="émail ..." >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Votre mot de passe :</label>
+            <input type="password" class="form-control" 
+            name="password" ngModel
+            placeholder="mot de passe ...">
+        </div>
+        <!-- <button type="submit" class="btn btn-secondary">Connecter !</button> -->
+        <div class="row">
+          <div class="col-md-4  col-sm ">
+            <button type="submit" class="btn btn-light w-100">Connecter !</button></div>
+          
+          <div class="col-md-4  col-sm ">
+            <button (click)="signWithGoogle()" class="btn btn-light w-100">WithGoogle !</button></div>
 
-  <form #f="ngForm" (ngSubmit)="login(f)" class="form border border-secondary rounded p-4" >
-    <div class="form-group">
-      <label class="text-muted">Email </label>
-      <input type="email" ngModel name="email" class="form-control">
-    </div>
-    <div class="form-group">
-      <label class="text-muted">Mot de passe</label>
-      <input type="password" name="password" ngModel class="form-control" id="exampleInputPassword1">
-    </div>
-    <button type="submit" class="btn btn-info btn-bg w-100">Envoyer</button>
-    <button type="button" class="btn w-100" data-toggle="modal" data-target="#popup">
-      Mot de passe oublié ?
-    </button>
+          <div class="col-md-4  col-sm text-center">
+            <button type="button" class=" btn btn-light w-100" data-toggle="modal" data-target="#popup">
+              Mot de passe oublié ?
+            </button>
+          </div>
+
+        </div>
+    <!-- </form>
+</div> -->
+
+
+
   </form>
 
   <!-- Pop-up -->
@@ -26,31 +46,8 @@
             <label class="sr-only">Password</label>
             <input type="email" class="form-control" ngModel name="email" placeholder="Votre email !">
           </div>
-          <button type="submit" class="btn btn-info mb-2">Confirmer</button>
+          <button type="submit" class="btn btn-secondary mb-2">Confirmer</button>
         </form>
       </div>
     </div>
   </div>
-
-</div>
-<!---------------------------Footer------------------------------ -->
-<!-- <footer class="page-footer footer-below footer font-small blue">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center mt-4 text-muted">
-        Licence <img alt="Licence Creative Commons" style="border-width:0"
-          src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"> by <a href="https://illettrisme.org"
-          class="text-muted">illettrisme.org</a>
-      </div>
-    </div>
-  </div>
-</footer> -->
-<!---------------------------Fin footer------------------------------ -->
-
-
-<div class="container mt-4 mb-4 border border-secondary rounded" *ngIf="loginUser">
-  <h1 class="text-secondary p-4 m-4"> Bienvenue, Vous venez de vous connectez à votre compte de Diego !
-    <a href="" class="btn btn-outline-secondary mr-4">Accéder à la page d'accueil !</a>
-    <a href="fichierAudio" class="ml-4 btn btn-outline-secondary">Démarrer un diagnostic !</a>
-  </h1>
-</div>

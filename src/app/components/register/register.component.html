@@ -1,81 +1,37 @@
-<div class="container mt-4 mb-4" *ngIf="!registerUser" >
-  <h1 class="text-center text">Créer mon compte </h1>
+<div class="container mt-md-5">
+    <h3 class="text-center text-secondary">Créer votre compte chez portail intervenant !</h3>
 
-  <form #f="ngForm" (ngSubmit)="register(f)" class="form border border-secondary rounded p-4">
-    <div class="form-group">
-      <label class="text-muted">Nom</label>
-      <input type="text" ngModel name="firstName" class="form-control ">
-    </div>
-    <div class="form-group">
-      <label class="text-muted">Prénom</label>
-      <input type="text" ngModel name="lastName" class="form-control" id="exampleInputPassword1">
-    </div>
-
-
-    <div class="form-group">
-      <label class="text-muted">Département</label>
-      <input type="text" ngModel name="departement" class="form-control">
-    </div>
-
-
-
-
-    <div class="form-group col-md-12">
-      <label class="text-muted"> Type de structure :</label><br>
-      <label class="form-check-label text-muted ml-4 mr-4">
-        <input class="form-check-input" ngModel name="structure" value="Prescripteur" type="radio"> Prescripteur
-      </label>
-      <label class="form-check-label text-muted ml-4 mr-4 ">
-        <input class="form-check-input" ngModel name="structure" value="Organisme de formation" type="radio"> Organisme
-        de formation
-      </label>
-      <label class="form-check-label text-muted ml-4 mr-4  ">
-        <input class="form-check-input " ngModel name="structure" value="Association de proximité" type="radio">
-        Association de proximité
-      </label>
-      <label class="form-check-label text-muted ml-4 mr-4  ">
-        <input class="form-check-input " ngModel name="structure" value="Entreprise" type="radio"> Entreprise
-      </label>
-      <label class="form-check-label text-muted ml-4 mr-4  ">
-        <input class="form-check-input " ngModel name="structure" value="Fonction publique" type="radio"> Fonction
-        publique
-      </label>
-      <label class="form-check-label text-muted ml-4 mr-4  ">
-        <input class="form-check-input " ngModel name="structure" value="IAE" type="radio"> IAE
-      </label>
-      <label class="form-check-label text-muted ml-4 mr-4  ">
-        <input class="form-check-input " ngModel name="structure" value="Autre" type="radio"> Autre: précisez
-      </label>
-      <label class="form-check-label text-muted ml-4 mr-4  ">
-        <input class="form-check-input " ngModel name="structure" value="Fonction publique" type="radio"> Fonction
-        publique
-      </label>
-    </div>
-
-
-
-    <div class="form-group">
-      <label class="text-muted">Email </label>
-      <input type="email" ngModel name="email" class="form-control">
-    </div>
-    <div class="form-group">
-      <label class="text-muted">Mot de passe</label>
-      <input type="password" name="password" ngModel class="form-control" id="exampleInputPassword1">
-    </div>
-
-
-
-
-
-    <button type="submit" class="btn bg btn-info w-100">Envoyer !</button>
-  </form>
-</div>
-<!---------------------------Fin footer------------------------------ -->
-
-
-
-<div class="container mt-4 mb-4 border border-secondary rounded" *ngIf="registerUser" >
-  <h1 class="text-secondary p-4 m-4"> Bienvenue, Vous venez de créer votre compte ! 
-    <a href="" class="btn btn-outline-secondary mr-4" >Accéder à la page d'accueil !</a>
-    <a href="fichierAudio" class="ml-4 btn btn-outline-secondary" >Démarrer un diagnostic !</a> </h1>
+    <form class="m-auto mt-md-5 text-secondary" #f="ngForm" (ngSubmit)="onRegister(f.value)">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Votre Nom : </label>
+            <input type="text" class="form-control" 
+            name="nom" ngModel
+            placeholder="nom ..." >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Votre Prenom : </label>
+            <input type="text" class="form-control"
+            name="prenom" ngModel
+            placeholder="prenom ..." >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Votre fonction : </label>
+            <input type="text" class="form-control" 
+            name="fonction" ngModel
+            placeholder="fonction ..." >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Votre adresse email : </label>
+            <input type="email" class="form-control"
+            name="email" ngModel
+            placeholder="email ..." >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Votre mot de passe :</label>
+            <input type="password" 
+            name="password" ngModel
+            class="form-control" placeholder="mot de passe ...">
+        </div>
+        <button type="submit" class="btn btn-secondary">Inscription !</button>
+    </form>
 </div>

@@ -4,35 +4,46 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import firebase from 'firebase/app'
+import { async } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  email;
   user: Observable<firebase.User>;
-  constructor(private afauth: AngularFireAuth, private fs: AngularFirestore) {
+  isUser: boolean = false;
+  constructor(public afauth: AngularFireAuth, private fs: AngularFirestore) {
     this.user = afauth.user
+    console.log("this user in service ", this.user);
+
+    console.log("this user in service ", this.user.subscribe(u=>{
+      console.log("le token est :  ", u.getIdToken);
+      
+    }));
 
   }
-  userId = '';
+  // userId = '';
 
   async getHexesInRows() {
-    return this.user;
+    let user = await this.user.subscribe(res => {
+      console.log("hello :", res.uid);
+      // console.log("hello res all :", res.linkWithCredential);
+      this.email = res.email
+    })
+    return user
   }
 
   register(email, password) {
     return this.afauth.createUserWithEmailAndPassword(email, password);
-    
   }
-  addNewUser(uid, firstName, lastName, structure, departement, email) {
-    // location.reload()
+  addNewUser(uid, nom, prenom, email) {
     return this.fs.doc('users/' + uid).set({
       uid,
-      firstName,
-      lastName,
-      structure,
-      departement,
+      nom,
+      prenom,
       email,
+      admin: false
 
     })
   }
@@ -40,6 +51,7 @@ export class AuthService {
   async userconnecter(userId: string) {
     const e = await this.fs.collection('user')
       .doc(userId).get()
+    this.user
     return e
   }
 
@@ -59,5 +71,9 @@ export class AuthService {
       })
   }
 
+  // ************************  signIn with google **********************************
+  signInWithGoogle() {
+    return this.afauth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
 
 }

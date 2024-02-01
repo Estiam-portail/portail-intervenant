@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-bd">
+    <div class="container-fluid " style="background-color: #542ab2;">
+      <a routerLink="" class="navbar-brand"><img class="rounded-circle img" src="../assets/estiam_logo_fond_violet-scaled.jpg"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <button routerLink="GenerateContract" class="nav-link active btn bg" *ngIf="this.authService.isUser">Generer une contrat</button>
+          </li>
+                <!-- <li  class="list-group-item">
+                  <a routerLink="getDocumentsPersonneMorale" class="dropdown-item">La liste des intervenants</a>
+                </li>  -->
+                <li class="nav-item dropdown" *ngIf='this.authService.isUser && adminUid=="HxFgB53RJWV3107SY0to5Grx7Df2"'>
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Liste des intervenants
+                  </a>
+                  <ul class="dropdown-menu" style="background-color: #542ab2;">
+                    <li><a routerLink="getDocumentsPersonneMorale" class="dropdown-item" >Personne morale</a></li>
+                    <li><a routerLink="GetDocumentsTravailleurIndependant" class="dropdown-item">Travailleur independant</a></li>
+                  </ul>
+                </li>
+          <!-- <li class="nav-item">
+            <button class="nav-link active btn bg" >{{authService.email}}</button>
+          </li> -->
+        </ul>
+        <div class="pl-md-4" *ngIf="!this.authService.isUser"> 
+          <button class="btn bg" routerLink="register" >Register</button> 
+          <button class="btn bg"  routerLink="login" > Login</button>
+        </div>
+        <div class="pl-md-4" >
+          <ul class="pl-md-4" *ngIf="this.authService.isUser">
+            
+            <li class="nav-item dropdown btn bg ">
+               <a class="nav-link dropdown-toggle text-secondary"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     {{user.email}} 
+                    </a>
+              <ul class="dropdown-menu" style="background-color: #542ab2;">
+        
+                <li  class="list-group-item">
+                  <a routerLink="SendDocuments" class="dropdown-item">Envoyer mes Documents</a>
+                </li>
+                <li  class="list-group-item" >
+                  <a routerLink="users" class="dropdown-item" *ngIf='adminUid=="HxFgB53RJWV3107SY0to5Grx7Df2"'>La list des intervenants</a>
+                </li>
+                <li  class="list-group-item" >
+                  <a routerLink="emplois/create-emplois" *ngIf='adminUid=="HxFgB53RJWV3107SY0to5Grx7Df2"' class="dropdown-item">Creer une annonce </a>
+                </li>
+                <li  class="list-group-item">
+                  <hr class="dropdown-divider">
+                </li>
+                <li  class="list-group-item">
+                  <a class="dropdown-item" (click)="logout()">Se déconnecter</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- fin navigation -->

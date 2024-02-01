@@ -1,0 +1,138 @@
+<div class="container">
+
+  <div class="jumbotron mt-md-5">
+    <h1 class="display-4"><strong> MR : </strong>{{detail.prenom }} {{detail.nom }}</h1>
+    <p class="lead">
+      <strong class="mr-md"> Email : </strong> {{detail.email}}
+      <strong class="ml-md-5"> Tel : </strong> {{detail.telephone}}
+
+    </p>
+    <hr class="my-4">
+    <strong> Ma biographie : </strong>
+    <p>{{detail.biographie}}</p>
+  </div>
+
+  <!-- ************************************************************************************* -->
+  <div class="alert alert-success" role="alert" *ngIf="complet">
+    Votre dosier est complet ...
+  </div>
+
+
+  <div class="alert alert-danger" role="alert" *ngIf="!complet">
+    Votre dosier n'est pas complet ...
+  </div>
+
+
+
+
+  <!-- ************************************************************************************************* -->
+
+  <div class=" p-4 mt-4">
+    <div class="row">
+
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlAssestationURSAFRSI}}">
+          <img class="w-100" [src]="detail.UrlAssestationURSAFRSI || '../../../../assets/no-image.jpg'" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">AssestationURSAFRSI </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlAssujettissement}}">
+          <img class="w-100" [src]="detail.UrlAssujettissement || '../../../../assets/no-image.jpg'" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">Assujettissement </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlAttestationPrecisant}}">
+          <img class="w-100" [src]="detail.UrlAttestationPrecisant || '../../../../assets/no-image.jpg'" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">AttestationPrecisant </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlCV}}">
+          <img class="w-100" [src]="detail.UrlCV " /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">CV </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlCarteVital}}">
+          <img class="w-100" [src]="detail.UrlCarteVital || '../../../../assets/no-image.jpg'" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">CarteVital </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlCopiecet}}">
+          <img class="w-100" [src]="detail.UrlCopiecet || '../../../../assets/no-image.jpg'" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">Copie c e t </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlExtraitCAsierJudiciaire}}">
+          <img class="w-100" [src]="detail.UrlExtraitCAsierJudiciaire || '../../../../assets/no-image.jpg'" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">ExtraitCAsierJudiciaire </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlIdentitie}}">
+          <img class="w-100" [src]="detail.UrlIdentitie || '../../../../assets/no-image.jpg'" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">Carte Identitie </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlOrdreProfessionnel}}">
+          <img class="w-100" [src]="detail.UrlOrdreProfessionnel || '../../../../assets/no-image.jpg'" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">Ordre Professionnel </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlOrganismeFormation}}">
+          <img class="w-100" [src]="detail.UrlOrganismeFormation || '../../../../assets/no-image.jpg'" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">OrganismeFormation </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+      <!-- ********************************************* -->
+      <div class="col-md-4 col-sm-12 mt-5">
+        <a target="_blank" href="{{detail.UrlRIBIBAN}}">
+          <img class="w-100" [src]="detail.UrlRIBIBAN || '../../../../assets/no-image.jpg'" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">RIBIBAN </p>
+        </div>
+      </div>
+      <!-- ************************************* -->
+
+
+    </div>
+  </div>

@@ -1,0 +1,34 @@
+<div class="container text-center">
+    <h3 class="text-center m-5">copie de l’inscription à un ordre professionnel ou copie extrait de KBIS ou avis de situation au répertoire SIRENE ou attestation d’affiliation au régime d’auto entrepreneur </h3>
+       
+      
+  <label>
+      <input
+        type="file"
+        class="text-nowrap text-truncate"
+        (change)="selectFile($event)"
+      />
+    </label>
+    
+    <button
+      class="btn btn-success btn-sm"
+      [disabled]="!selectedFiles"
+      (click)="upload()"
+    >
+      Upload
+    </button>
+    
+    <div *ngIf="currentFileUpload" class="progress mt-2">
+      <div
+        class="progress-bar progress-bar-info"
+        role="progressbar"
+        attr.aria-valuenow="{{ percentage }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: percentage + '%' }"
+      >
+        {{ percentage }}%
+      </div>
+    </div>
+    
+    </div>

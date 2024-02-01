@@ -1,4 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-._bg{
-    background-color: rgb(213, 84, 105);
+
+*,::before,::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
+body{
+    height: 100vh;
+}
+
+/* ._bg{
+    background-color: rgb(213, 84, 105);
+} */
+
+
+
+
+/* .bg{
+    background-color: beige;
+    color: #542ab2;
+    margin: 5px;
+}
+.bg{
+    background-color: #e5edea;
+} */

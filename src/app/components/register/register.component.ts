@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { User } from 'src/app/models/user.interface';
 import { AuthService } from 'src/app/services/auth.service';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,24 +10,24 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
   registerUser : boolean = false;
-  constructor(private authService :AuthService, private router: Router) { }
+  constructor( private authService:AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
-  register(form){
-    let data:User = form.value
+  onRegister(f:any){
+    let data:User = f
     this.authService.register(data.email,data.password)
     .then(result =>{
-      console.log(result)
-    this.authService.addNewUser(result.user.uid, data.firstName, data.lastName,data.structure,data.departement,data.email).then(()=>{
+      console.log("uid .... ;;;;   ;! : " ,result.user.uid)
+    this.authService.addNewUser(result.user.uid, data.nom, data.prenom,data.email).then(()=>{
       this.registerUser = true;
       // this.router.navigate(['/'])
-
-
+      console.log("succcess add user !")
     })
       console.log("succcess !")
-      // this.router.navigate([''])
+      this.router.navigate([''])
       this.registerUser = true;
       
     }

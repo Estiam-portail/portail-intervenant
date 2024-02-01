@@ -1,0 +1,32 @@
+<div class="container">
+    
+    <div class="alert alert-light" >
+      <h1 class="text-center">La liste des documents </h1>
+    </div>
+
+    <table class="table">
+        <thead>
+          <tr class="alert alert-secondary">
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doc of documents">
+            <th scope="row">{{doc.nom }} </th>
+            <td>{{ doc.prenom}}</td>
+            <td>{{doc.email}}</td>
+            <td>{{doc.telephone}}</td>
+            <td> <button  class="btn btn-premary"
+               (click)="onDetail(doc.id)"> 
+               <i class="fa-solid fa-circle-info bg"></i>
+              </button></td>
+            </tr>
+        </tbody>
+      </table>
+</div>
+
+

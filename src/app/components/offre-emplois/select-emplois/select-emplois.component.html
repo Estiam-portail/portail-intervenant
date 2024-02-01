@@ -1,0 +1,43 @@
+<div class="container">
+    <h1 class="text-center text-secondary">La totalité de nos offres sont : {{documentData.length}}</h1>
+    <div class="row">
+        <div class="col-md-4 col-ms-12 mt-6" *ngFor="let doc of documentData ; let i = index">
+            <div class="card mt-4">
+                <div class="card-header">
+                    <strong>{{doc.title}}</strong>
+                </div>
+                <div class="card-body">
+                    <!-- *****************************************
+                 -->
+                    <div class="row">
+                        <div class="col-4">
+                            <p class="card-title"><strong>Durée : </strong>{{doc.duree}} h</p>
+                        </div>
+                        <div class="col-8">
+                            <p class="card-title"><strong>Dates : </strong>{{doc.datesModel}}</p>
+                        </div>
+                    </div>
+                    <!-- ********************************** -->
+                    <p class="card-title"><strong>Description : </strong>{{doc.description | slice:0:100}} ...</p>
+                    <p class="card-title"><strong>Info programme : </strong>{{doc.programme | slice:0:100}} ...</p>
+
+                </div>
+
+                <!-- ******** -->
+                <div class="row">
+                        <div class="col-6">
+
+                            <button class="btn bg-sec" (click)="onShowCandidat(doc.id)">
+                                Voir l'offre
+                            </button>
+                            
+                        </div>
+                        <!-- <div class="col-6">
+                            <button class="btn bg-sec" (click)="onCandidat(doc.id)">Pustuler pour cette offre
+                            </button>
+                        </div> -->
+                        </div>
+                <!-- ************ -->
+
+
+           

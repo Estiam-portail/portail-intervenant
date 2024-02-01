@@ -1,0 +1,34 @@
+<div class="container ">
+    <h1 class="text-center text-secondary mt-md-5 ">Créer un model</h1>
+
+
+      <form [formGroup]="snapForm" class="form-group text-secondary" >   
+        <div class="form-group">
+          <label>Le nom de module</label>
+            <input class="form-control"  id="title" type="text" formControlName="title">
+        </div>
+        <div class="form-group">
+          <label>Les dates de module</label>
+            <input class="form-control"   type="text" formControlName="datesModel">
+            
+        </div>
+        <div class="form-group">
+          <label>Durée(timing) heure </label>
+            <input class="form-control"   type="text" formControlName="duree">
+            
+        </div>
+        <div class="form-group">
+          <label>Objectifs pédagogiques (educational goals) : </label>
+            <textarea class="form-control" type="text" formControlName="description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Info programme (educational program) / Certification : : </label>
+            <textarea class="form-control" type="text" formControlName="programme"></textarea>
+        </div>
+
+        <div class="action-buttons">
+            <button type="submit" class="btn btn-secondary" (click)="onSubmitForm()">Enregistrer</button>
+        </div>
+    </form>
+</div>

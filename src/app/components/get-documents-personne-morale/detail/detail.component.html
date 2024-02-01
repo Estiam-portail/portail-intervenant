@@ -1,0 +1,309 @@
+<div class="container">
+
+  <div class="jumbotron mt-md-5">
+    <h1 class="display-4"><strong> {{detail.genre }}: </strong>{{detail.prenom }} {{detail.nom }}</h1>
+    <p class="lead">
+      <strong class="mr-md"> Email : </strong> {{detail.email}}
+      <strong class="ml-md-5"> Téléphone : </strong> {{detail.telephone}}
+
+    </p>
+    <hr class="my-4">
+    <strong> Ma biographie : </strong>
+    <p>{{detail.biographie}}</p>
+  </div>
+
+  <!-- ************************************************************************************* -->
+  <div class="alert alert-success" role="alert" *ngIf="complet">
+    Votre dossier est complet ...
+  </div>
+
+
+  <div class="alert alert-danger" role="alert" *ngIf="!complet">
+    Votre dossier n'est pas complet ...
+  </div>
+
+
+
+
+  <!-- ************************************************************************************************* -->
+
+  <div class=" p-4 mt-4">
+
+    <div class="row">
+
+      <!-- ********************************************************************************************************-->
+      <!-- **************************************       Copie URSSAFRSIouMSA     **********************************-->
+      <!-- ********************************************************************************************************-->
+      <div class="col-md-4 col-sm-12 "
+        [ngStyle]="!detail.URSSAFRSIouMSA?{'border-top': ' 5px solid red'} : {'border-top': ' 5px solid green'}">
+        <a target="_blank" href="{{detail.URSSAFRSIouMSA}}">
+          <img class="img-fluid w-100 h-75" src="../../../../assets/ursaf.jpg" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">URSSAF RSI ou MSA </p>
+
+
+          <!-- ***************************   modal ************************************************ -->
+          <!-- Button trigger modal -->
+          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#URSSAFRSIouMSA"
+            (click)="updateURSSAFRSIouMSA(detail.URSSAFRSIouMSA)">
+            <i class="fa-solid fa-arrow-up-from-bracket text-primary"></i>
+          </button>
+
+          <!---------------------------------------     Modal            ------------------------ -->
+          <div class="modal fade" id="URSSAFRSIouMSA" tabindex="-1" aria-labelledby="exampleModalLabel" 
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="alert alert-success" role="alert" *ngIf="modal">
+                la modification de votre fichier URSSAF RSI ou MSA  a bien été prise en compte
+              </div>
+              <div class="modal-content" *ngIf="!modal">
+                <div class="modal-header" >
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">change</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <label>
+                    <input type="file" class="text-nowrap text-truncate" (change)="selectFileURSSAFRSIouMSA($event)" />
+                  </label>
+
+                  <button class="btn btn-success btn-sm" (click)="uploadURSSAFRSIouMSA()">
+                    envoyer
+                  </button>
+                </div>
+              </div>
+              <div class="modal-footer" >
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onModal()">Revenir à mes fichiers</button>
+              </div>
+            </div>
+          </div>
+
+          <!---------------------------------------    Fin  Modal            ------------------------ -->
+        </div>
+      </div>
+
+      <!-- ********************************************************************************************************-->
+      <!-- **************************************       Fin Copie URSSAFRSIouMSA     **********************************-->
+      <!-- ********************************************************************************************************-->
+
+      <!-- ********************************************************************************************************-->
+      <!-- **************************************       Copie UrlCopieCET     **********************************-->
+      <!-- ********************************************************************************************************-->
+      <div class="col-md-4 col-sm-12 "
+        [ngStyle]="!detail.UrlCopieCET?{'border-top': ' 5px solid red'} : {'border-top': ' 5px solid green'}">
+        <a target="_blank" href="{{detail.UrlCopieCET}}">
+          <img class="img-fluid w-100 h-75 " src="../../../../assets/cet.jpg" /></a>
+        <div class="card-body text-center ">
+
+          Contribution Économique Territoriale
+
+          <!-- ***************************   modal ************************************************ -->
+          <!-- Button trigger modal -->
+          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#UrlCopieCET"
+            (click)="updateUrlCopieCET(detail.UrlCopieCET)">
+            <i class="fa-solid fa-arrow-up-from-bracket text-primary"></i>
+          </button>
+
+          <!---------------------------------------     Modal            ------------------------ -->
+          <div class="modal fade" id="UrlCopieCET" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="alert alert-success" role="alert" *ngIf="modal">
+                la modification de votre fichier URSSAF RSI ou MSA  a bien été prise en compte
+              </div>
+              <div class="modal-content" *ngIf="!modal">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">change</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <label>
+                    <input type="file" class="text-nowrap text-truncate" (change)="selectFileUrlCopieCET($event)" />
+                  </label>
+
+                  <button class="btn btn-success btn-sm" (click)="uploadUrlCopieCET()">
+                    envoyer
+                  </button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onModal()">Revenir à mes fichiers</button>
+              </div>
+            </div>
+          </div>
+
+          <!---------------------------------------    Fin  Modal            ------------------------ -->
+        </div>
+      </div>
+      <!-- ********************************************************************************************************-->
+      <!-- **************************************       fin Copie UrlCopieCET     **********************************-->
+      <!-- ********************************************************************************************************-->
+
+      <!-- *************************************************************************************************-->
+      <!-- **************************************       Copie Extrait     **********************************-->
+      <!-- *************************************************************************************************-->
+      <div class="col-md-4 col-sm-12 "
+        [ngStyle]="!detail.UrlCopieExtrait?{'border-top': ' 5px solid red'} : {'border-top': ' 5px solid green'}">
+        <a target="_blank" href="{{detail.UrlCopieExtrait}}">
+          <img class="img-fluid w-100 h-75" src="../../../../assets/extrait-kbis.jpg" /></a>
+        <div class="card-body">
+          <p class="card-text text-center m-md-2">Copie Extrait </p>
+          <!-- ***************************   modal ************************************************ -->
+          <!-- Button trigger modal -->
+          <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            (click)="updateExtrait(detail.UrlCopieExtrait)">
+            <i class="fa-solid fa-arrow-up-from-bracket text-primary"></i>
+          </button>
+
+          <!---------------------------------------     Modal            ------------------------ -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="alert alert-success" role="alert" *ngIf="modal">
+                la modification de votre fichier URSSAF RSI ou MSA  a bien été prise en compte
+              </div>
+              <div class="modal-content" *ngIf="!modal">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <label>
+                    <input type="file" class="text-nowrap text-truncate" (change)="selectFileExtrait($event)" />
+                  </label>
+
+                  <button class="btn btn-success btn-sm" (click)="uploadExtrait()">
+                    Upload
+                  </button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onModal()">Revenir à mes fichiers</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!---------------------------------------    Fin  Modal            ------------------------ -->
+      </div>
+    </div>
+
+    <!-- *************************************************************************************************-->
+    <!-- **************************************      Fin Copie Extrait     **********************************-->
+    <!-- *************************************************************************************************-->
+
+    <!-- **************************      fin div row ******************************************************* -->
+  </div>
+
+  <!-- ********************************************************************************************************-->
+  <!-- **************************************       Copie UrlRIBIBANBIC     **********************************-->
+  <!-- ********************************************************************************************************-->
+
+  <div class="row">
+    <!-- ********************************************* -->
+    <div class="col-md-4 col-sm-12 mt-5"
+      [ngStyle]="!detail.UrlRIBIBANBIC?{'border-top': ' 5px solid red'} : {'border-top': ' 5px solid green'}">
+      <a target="_blank" href="{{detail.UrlRIBIBANBIC}}">
+        <img class="img-fluid w-100 h-75 " src="../../../../assets/rib.png" /></a>
+      <div class="card-body">
+        <p class="card-text text-center m-md-2">RIB IBAN BIC </p>
+
+        <!-- ***************************   modal ************************************************ -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#RIBIBANBIC"
+          (click)="updateRIBIBANBIC(detail.UrlRIBIBANBIC)">
+          <i class="fa-solid fa-arrow-up-from-bracket text-primary"></i>
+        </button>
+
+        <!---------------------------------------     Modal            ------------------------ -->
+        <div class="modal fade" id="RIBIBANBIC" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="alert alert-success" role="alert" *ngIf="modal">
+              la modification de votre fichier URSSAF RSI ou MSA  a bien été prise en compte
+            </div>
+            <div class="modal-content" *ngIf="!modal">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">change</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <label>
+                  <input type="file" class="text-nowrap text-truncate" (change)="selectFileRIBIBANBIC($event)" />
+                </label>
+
+                <button class="btn btn-success btn-sm" (click)="uploadRIBIBANBIC()">
+                  envoyer
+                </button>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onModal()">Revenir à mes fichiers</button>
+            </div>
+          </div>
+        </div>
+
+        <!---------------------------------------    Fin  Modal            ------------------------ -->
+
+      </div>
+      <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+      <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+      <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+
+
+
+    </div>
+
+
+    <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::            UrlassuranceRC        :::::::::::::::::::::::::::::::::::::::::::: -->
+    <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <div class="col-md-4 col-sm-12 mt-5"
+      [ngStyle]="!detail.UrlassuranceRC?{'border-top': ' 5px solid red'} : {'border-top': ' 5px solid green'}">
+      <a target="_blank" href="{{detail.UrlassuranceRC}}">
+        <img class="img-fluid w-100 h-75 " src="../../../../assets/Responsabilite-Civile-Pro.png" /></a>
+      <div class="card-body">
+        <p class="card-text text-center m-md-2">assurance RC </p>
+
+
+        <!-- ***************************   modal ************************************************ -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#assuranceRC"
+          (click)="updateassuranceRC(detail.UrlassuranceRC)">
+          <i class="fa-solid fa-arrow-up-from-bracket text-primary"></i>
+        </button>
+
+        <!---------------------------------------     Modal            ------------------------ -->
+        <div class="modal fade" id="assuranceRC" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="alert alert-success" role="alert" *ngIf="modal">
+              la modification de votre fichier URSSAF RSI ou MSA  a bien été prise en compte
+            </div>
+            <div class="modal-content" *ngIf="!modal">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">change</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <label>
+                  <input type="file" class="text-nowrap text-truncate" (change)="selectFileassuranceRC($event)" />
+                </label>
+
+                <button class="btn btn-success btn-sm" (click)="uploadassuranceRC()">
+                  envoyer
+                </button>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="onModal()">Revenir à mes fichiers</button>
+            </div>
+          </div>
+        </div>
+
+        <!---------------------------------------    Fin  Modal            ------------------------ -->
+
+      </div>
+    </div>
+
+    <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::         fin UrlassuranceRC        :::::::::::::::::::::::::::::::::::::::::::: -->
+    <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+  </div>
+</div>
